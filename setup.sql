@@ -22,7 +22,7 @@ CREATE TABLE Hotel (
 	Hotel_Address Address,
 	Contact_Email VARCHAR(50),
 	Number_of_Rooms INTEGER,
-	Rating INTEGER #TODO: make this 0 to 5
+	Rating INTEGER #TODO: make this 1 to 5
 	PRIMARY KEY Hotel_ID #TODO: make this include Hotel_Chain_ID (or not)
 );
 
