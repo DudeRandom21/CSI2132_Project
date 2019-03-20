@@ -52,6 +52,7 @@
                 <div class="col-xs-4">
                     <h1>Find a room today!</h1>
                     <!-- Dates -->
+                    <label>Welcome: <?php echo $_GET["usr"]; ?></label><br>
                     <label for="start_date">Start Date</label>
                     <input type="usr" class="form-control" id="startDate">
                     <label for="end_date">End Date</label>
@@ -77,7 +78,7 @@
                     <label for="price_of_room">Price of rooms</label>
                     <input type="usr" class="form-control" id="price_of_room">
                     
-                    <a href="/seemore.html" class="btn btn-primary-active add-top-padding">Search</a>
+                    <input type="submit" value="Search">
                 </div>
             </div>
         </form>

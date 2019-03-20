@@ -48,20 +48,21 @@
 
     <!-- SECTION 1: Main Form -->
     <div class="container-fluid">
-        <form action="/action_page.php">
+        <form action="./signin_redirect.php" method="post">
             <div class="row">
                 <div class="col-xs-4">
                     <h1>Login Page</h1>
                     <label for="username">User name:</label>
-                    <input type="usr" class="form-control" id="usr">
+                    <input type="usr" class="form-control" name="usr">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <input type="password" class="form-control" name="pwd">
                     <div class="container-fluid">
                         <input type="radio" class="radioID" name="isEmployee" value="customer"> Customer<br>
                         <input type="radio" class="radioID" name="isEmployee" value="employee"> Employee<br>
                         <input type="radio" class="radioID" name="isEmployee" value="employee"> Admin<br>
                     </div>
-                    <a href="/seemore.html" class="btn btn-primary-active add-top-padding">Login</a>
+                    <input type="submit" name="submit">
+                    <!-- <a href="/seemore.html" class="btn btn-primary-active add-top-padding">Login</a> -->
                 </div>
             </div>
         </form>
