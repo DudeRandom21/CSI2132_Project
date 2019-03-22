@@ -3,7 +3,7 @@ CREATE TABLE Hotel_Chain (
 	Central_Office INTEGER,
 	Number_of_Hotels INTEGER,
 	Contact_Email VARCHAR(50),
-	PRIMARY KEY Hotel_Chain_ID
+	PRIMARY KEY (Hotel_Chain_ID)
 );
 
 CREATE TABLE HotelChain_PhoneNumbers (
@@ -19,11 +19,11 @@ CREATE TABLE Parent_Chain (
 CREATE TABLE Hotel (
 	Hotel_Chain_ID INTEGER,
 	Hotel_ID INTEGER,
-	Hotel_Address Address,
+	-- Hotel_Address Address,
 	Contact_Email VARCHAR(50),
 	Number_of_Rooms INTEGER,
-	Rating INTEGER #TODO: make this 1 to 5
-	PRIMARY KEY Hotel_ID #TODO: make this include Hotel_Chain_ID (or not)
+	Rating INTEGER, --TODO: make this 1 to 5
+	PRIMARY KEY (Hotel_ID) --TODO: make this include Hotel_Chain_ID (or not)
 );
 
 CREATE TABLE Hotel_PhoneNumbers (
@@ -43,8 +43,8 @@ CREATE TABLE ManagesA (
 
 CREATE TABLE Employee (
 	SIN NUMERIC(9),
-	Name VARCHAR(20),
-	Address Address
+	Name VARCHAR(20)
+	-- Address Address
 );
 
 CREATE TABLE Room (
@@ -80,12 +80,12 @@ CREATE TABLE Booking (
 	Renting_Time TIME,
 	Is_Renting BOOLEAN,
 	Customer_Name VARCHAR(20),
-	Is_Paid BOOLEAN,
+	Is_Paid BOOLEAN
 );
 
 CREATE TABLE OwnsA (
-	Hotel_ID INTEGER
-	Booking_ID INTEGER,
+	Hotel_ID INTEGER,
+	Booking_ID INTEGER
 );
 
 CREATE TABLE Archive (
