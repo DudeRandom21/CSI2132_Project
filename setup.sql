@@ -43,7 +43,8 @@ CREATE TABLE ManagesA (
 
 CREATE TABLE Employee (
 	SIN NUMERIC(9),
-	Name VARCHAR(20)
+	Name VARCHAR(20),
+	password VARCHAR(20)
 	-- Address Address
 );
 
@@ -98,4 +99,11 @@ CREATE TABLE Archive (
 	Room_Number INTEGER,
 	Hotel_ID INTEGER,
 	Hotel_Chain_ID INTEGER
+);
+
+
+CREATE TABLE users (
+	username VARCHAR(20),
+	password VARCHAR(20),
+	PRIMARY KEY (username)
 );

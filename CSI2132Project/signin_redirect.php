@@ -1,11 +1,29 @@
 <?php
+session_start();
 
-//TODO: Authenticate the user/employee here and add their primary key to the $_SESSION variable
+$db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-if($_POST["isEmployee"] == "customer") {
-	header('Location: ./user_HomePage.php?usr=' . $_POST["usr"]); //This is really a hack it should be removed when auth is fixed
+if($_POST["isEmployee"] == "customer")
+	$query = "SELECT * FROM users WHERE username = '{$_POST["usr"]}'";
+
+else if($_POST["isEmployee"] == "employee")
+	$query = "SELECT * FROM employee WHERE name = '{$_POST["usr"]}'";
+
+$result = pg_query($db_connection, $query) or
+	die('Query failed: ' . pg_last_error());
+
+$row = pg_fetch_row($result);
+
+
+//Incorect password
+if ($row[1] != $_POST["pwd"])
+	header('Location: index.php'); //TODO: give the login page some error message if this happens.
+else {
+	//Assign session variables and continue to home page
+	$_SESSION["isEmployee"] = $_POST["isEmployee"];
+	$_SESSION["usr"] = $_POST["usr"];
+
+	header('Location: ./home_redirect.php');	
 }
-if($_POST["isEmployee"] == "employee") {
-	header('Location: employee_HomePage.html');
-}
+
 ?>
