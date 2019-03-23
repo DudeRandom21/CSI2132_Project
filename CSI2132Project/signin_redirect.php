@@ -3,7 +3,7 @@ session_start();
 
 $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-if($_POST["isEmployee"] == "customer")
+if($_POST["isEmployee"] == "user")
 	$query = "SELECT * FROM users WHERE username = '{$_POST["usr"]}'";
 
 else if($_POST["isEmployee"] == "employee")

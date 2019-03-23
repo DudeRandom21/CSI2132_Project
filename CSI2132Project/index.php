@@ -20,9 +20,9 @@
                     <label for="pwd">Password:</label>
                     <input type="password" class="form-control" name="pwd">
                     <div class="container-fluid">
-                        <input type="radio" class="radioID" name="isEmployee" value="customer"> Customer<br>
+                        <input type="radio" class="radioID" name="isEmployee" value="user"> Customer<br>
                         <input type="radio" class="radioID" name="isEmployee" value="employee"> Employee<br>
-                        <input type="radio" class="radioID" name="isEmployee" value="employee"> Admin<br>
+                        <input type="radio" class="radioID" name="isEmployee" value="admin"> Admin<br>
                     </div>
                     <input type="submit" name="submit">
                     <!-- <a href="/seemore.html" class="btn btn-primary-active add-top-padding">Login</a> -->

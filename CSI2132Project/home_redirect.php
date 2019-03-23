@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if($_SESSION["isEmployee"] == "customer") {
+if($_SESSION["isEmployee"] == "user") {
 	header('Location: ./user_HomePage.php');
 }
 
