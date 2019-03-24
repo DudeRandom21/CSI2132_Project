@@ -24,17 +24,3 @@
 
 
 ?>
-<!DOCTYPE html>
-<html>
-	<?php include("common_head.php"); ?>
-<head>
-	<title></title>
-</head>
-<body>
-	<?php include("header.php"); ?>
-<div>
-	<?php createTable("SELECT * FROM users", "Book Now!"); ?>
-
-</div>
-</body>
-</html>
