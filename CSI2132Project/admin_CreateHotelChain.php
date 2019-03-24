@@ -4,6 +4,15 @@
 
 <head>
     <?php include('common_head.php'); ?>
+    <?php
+    if (!empty($_POST)) {
+        $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+        $query = "INSERT INTO hotel_chain (hotel_chain_name, central_office, number_of_hotels, contact_email) VALUES ('{$_POST["hotel_chain_name"]}', {$_POST["central_office"]}, {$_POST["number_of_hotels"]}, '{$_POST["Contact_Email"]}')";
+
+        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+    }
+    ?>
 </head>
 
 <body>
@@ -14,7 +23,7 @@
         <!-- TODO: Add action location -->
         <div class="row">
 
-            <form action="#" method="post">
+            <form method="post">
 
                 <!-- Section 1: Create Hotel Chain Panel -->
                 <div class="col-xs-4">

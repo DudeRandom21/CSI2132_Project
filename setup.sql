@@ -1,5 +1,6 @@
 CREATE TABLE Hotel_Chain (
-	Hotel_Chain_ID INTEGER,
+	Hotel_Chain_ID SERIAL,
+	hotel_chain_name VARCHAR(20),
 	Central_Office INTEGER,
 	Number_of_Hotels INTEGER,
 	Contact_Email VARCHAR(50),
