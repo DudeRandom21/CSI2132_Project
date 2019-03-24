@@ -4,6 +4,28 @@
 
 <head>
     <?php include('common_head.php'); ?>
+
+    <?php
+        $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+        //processing hotel adding if any
+        if (!empty($_POST)) {
+
+            //TODO: the query for adding a hotel goes here!
+
+            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+        }
+        
+        // getting hotel chain information
+        $query = "SELECT * FROM hotel_chain WHERE hotel_chain_id = '{$_GET["id"]}'";
+
+        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        $hotel_chain = pg_fetch_array($result);
+
+        include("scrollable_table.php");
+    ?>
+
 </head>
 
 <body>
@@ -51,13 +73,13 @@
             <!-- Section 2: Hotel Information-->
 
             <div class="col-xs-4">
-                <h1>Hotel Information</h1>
+                <h1>Hotel Chain Information</h1>
 
                 <!-- Information Fields-->
-                <li>Hotel Name:</li>
-                <li>Contact Email:</li>
-                <li>Number of Rooms:</li>
-                <li>Rating:</li>
+                <li>Hotel Chain Name: <?php echo $hotel_chain["hotel_chain_name"]; ?></li>
+                <li>Central Office: <?php echo $hotel_chain["central_office"]; ?></li>
+                <li>Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></li>
+                <li>Contact Email: <?php echo $hotel_chain["contact_email"]; ?></li>
                 <li>TODO: Phone Numbers</li>
                 <!-- TODO: Handle multiple phone numbers -->
 
@@ -79,58 +101,7 @@
 
 
         <!-- Section 3: Table -->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-            <table class="table table-bordered table-striped mb-0">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
+        <?php createTable("SELECT * FROM hotel", "view", "admin_CreateRoom.php");?>
 
     </div>
 

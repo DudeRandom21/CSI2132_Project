@@ -8,7 +8,7 @@
     if (!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-        $query = "INSERT INTO hotel_chain (hotel_chain_name, central_office, number_of_hotels, contact_email) VALUES ('{$_POST["hotel_chain_name"]}', {$_POST["central_office"]}, {$_POST["number_of_hotels"]}, '{$_POST["Contact_Email"]}')";
+        $query = "INSERT INTO hotel_chain (hotel_chain_name, central_office, number_of_hotels, contact_email) VALUES ('{$_POST["hotel_chain_name"]}', {$_POST["central_office"]}, {$_POST["number_of_hotels"]}, '{$_POST["contact_email"]}')";
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
     }
@@ -79,7 +79,7 @@
 
 
         <!-- Section 3: Table -->
-        <?php createTable("SELECT * FROM hotel_chain", "view");?>
+        <?php createTable("SELECT * FROM hotel_chain", "view", "admin_CreateHotel.php");?>
 
     </div>
 
