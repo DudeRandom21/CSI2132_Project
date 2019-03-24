@@ -17,25 +17,40 @@
 
                 <!-- Section 1: Create Hotel Chain Panel -->
                 <div class="col-xs-4">
-                    <h1>Create a Hotel</h1>
+                    <h1>Create a Room</h1>
+                    
+    <!-- Hotel_Chain_ID INTEGER,
+	Hotel_ID INTEGER,
+	Room_Number INTEGER,
+	Can_be_Extended BOOLEAN,
+	has_Sea_View BOOLEAN,
+	has_Mountain_View BOOLEAN,
+	Room_Capacity INTEGER,
+	Price INTEGER
                     
                     <!-- Input fields -->
-                    <label for="hotel_name">Hotel Name</label>
-                    <input type="usr" class="form-control" name="hotel_name">
+                    <label for="room_number">Room Number</label>
+                    <input type="usr" class="form-control" name="room_number">
 
                     <!-- TODO: Build ID method that user doesn't see for creation
                     <label for="hotel_chain_id">Hotel Chain Id</label>
                     <input type="number" class="form-control" name="hotel_chain_id">
                     -->
 
-                    <label for="contact_email">Contact Email</label>
-                    <input type="email" class="form-control" name="contact_email">
+                    <label for="can_be_extended">Can be Extended</label>
+                    <input type="usr" class="form-control" name="can_be_extended">
 
-                    <label for="number_of_rooms">Number of Rooms</label>
-                    <input type="number" class="form-control" name="number_of_rooms">
+                    <label for="has_sea_view">Has Sea View</label>
+                    <input type="usr" class="form-control" name="has_sea_view">
 
-                    <label for="rating">Rating</label>
-                    <input type="number" class="form-control" name="rating">
+                    <label for="has_mountain_view">Has Mountain View</label>
+                    <input type="usr" class="form-control" name="has_mountain_view">
+                    
+                    <label for="room_capacity">Room Capacity</label>
+                    <input type="number" class="form-control" name="room_capacity">
+                    
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" name="price">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">
@@ -49,15 +64,16 @@
                 <!-- Section 2: Hotel Information-->
 
                 <div class="col-xs-4">
-                    <h1>Hotel Information</h1>
+                    <h1>Room Information</h1>
 
                     <!-- Information Fields-->
-                    <li>Hotel Name:</li>
-                    <li>Contact Email:</li>
-                    <li>Number of Rooms:</li>
-                    <li>Rating:</li>
-                    <li>TODO: Phone Numbers</li>
-                    <!-- TODO: Handle multiple phone numbers -->
+                    <li>Room Number:</li>
+                    <li>Can be extended:</li>
+                    <li>Has sea view:</li>
+                    <li>Has mountain view:</li>
+                    <li>Room capacity:</li>
+                    <li>Price:</li>
+
 
 
                 </div>
@@ -68,7 +84,7 @@
             <div class = "row">
                 <div class="col-xs-1"></div> <!-- used for spacing -->
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-primary">Go to Hotel Chain</button>
+                    <button type="button" class="btn btn-primary">Go to Hotel</button>
                 </div>
             </div>
             
