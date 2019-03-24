@@ -11,9 +11,10 @@
     <?php include("header.php") ?>
 
     <div class="container-fluid">
-        <form action="#" method="post">
-            <!-- TODO: Add action location -->
-            <div class="row">
+        <!-- TODO: Add action location -->
+        <div class="row">
+
+            <form action="#" method="post">
 
                 <!-- Section 1: Create Hotel Chain Panel -->
                 <div class="col-xs-4">
@@ -40,95 +41,86 @@
 
                     <input type="submit" name="submit">
                 </div>
+            </form>
 
 
-                <div class="col-xs-1"></div>
-                <!-- For spacing -->
+
+            <div class="col-xs-1"></div>
+            <!-- For spacing -->
 
 
-                <!-- Section 2: Hotel Information-->
+            <!-- Section 2: Hotel Information-->
 
-                <div class="col-xs-4">
-                    <h1>Hotel Information</h1>
+            <div class="col-xs-4">
+                <h1>Hotel Information</h1>
 
-                    <!-- Information Fields-->
-                    <li>Hotel Chain Name:</li>
-                    <li>Central Office:</li>
-                    <li>Number of Hotels:</li>
-                    <li>Contact Email:</li>
-                    <li>TODO: Phone Numbers</li>
-                    <!-- TODO: Handle multiple phone numbers -->
+                <!-- Information Fields-->
+                <li>Hotel Chain Name:</li>
+                <li>Central Office:</li>
+                <li>Number of Hotels:</li>
+                <li>Contact Email:</li>
+                <li>TODO: Phone Numbers</li>
+                <!-- TODO: Handle multiple phone numbers -->
 
-
-                </div>
-            </div>
-            <!-- End of row -->
-
-            <!--  Used for buttons not needed on hotel chain
-            <div class = "row">
-                <div class = "col-xs-10"></div>
-                <div class="col-sm-1">
-                    <button type="button" class="btn btn-primary">Primary</button>
-                </div>
-            </div>
-            -->
-
-
-            <!-- Section 3: Table -->
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-                <table class="table table-bordered table-striped mb-0">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
 
             </div>
+        </div>
+        <!-- End of row -->
 
-        </form>
+
+        <!-- Section 3: Table -->
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <table class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
     </div>
 
 
