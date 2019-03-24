@@ -1,0 +1,4 @@
+TODO LIST:
+
+- For ALL IDS:
+	- Implement a method that can count the last item and then add 1 to "next Id", 	which can be used when creating new items like a hotel chain.
