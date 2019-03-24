@@ -6,7 +6,8 @@
 
 		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-		echo '<table class="table table-bordered">';
+		echo '<div class="table-wrapper-scroll-y my-custom-scrollbar">';
+		echo '<table class="table table-bordered table-striped mb-0">';
 		// TODO: add table headers if possible (simple)
 		echo '<tbody>';
 		while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
@@ -17,11 +18,12 @@
 		    echo '<td> <button type="button" class="btn">' . $buttonText . '</button></td>';
 		    echo "\t</tr>\n";
 		}
-		echo "</table>\n";		
+		echo "</table>\n";
+		echo "</div>\n";		
 	}
 
 
-?><!-- 
+?>
 <!DOCTYPE html>
 <html>
 	<?php include("common_head.php"); ?>
@@ -35,4 +37,4 @@
 
 </div>
 </body>
-</html> -->
+</html>
