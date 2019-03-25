@@ -3,7 +3,28 @@
 <html lang="en">
 
 <head>
-    <?php include('common_head.php'); ?>
+    <?php include('common_head.php');
+
+        if(!empty($_POST)) {
+        $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+        $query = "UPDATE users SET ";
+
+        if($_POST["usr"] != "") {
+            $query = $query . "username = '{$_POST["usr"]}'";
+            $_SESSION["usr"] = $_POST["usr"];
+        }
+        if($_POST["usr"] != "" && $_POST["pwd"] != "") {
+            $query = $query . ", and ";
+        }
+        if($_POST["pwd"] != "") {
+            $query = $query . "pwd = '{$_POST["pwd"]}'";
+        }
+        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        }
+
+    ?>
 </head>
 
 <body>
@@ -15,66 +36,43 @@
         <div class="row">
 
             <!-- Section 1: Create Hotel Chain Panel -->
-            <form action="#" method="post">
+            <form method="post">
                 <div class="col-xs-6">
-                    <h1>"Your name" Profile</h1>
+                    <h1> <?php echo $_SESSION["usr"] ?> Profile</h1>
                     <br>
 
                     <!-- Input fields -->
                     <div class="row">
                         <div class="col-xs-6">
                             <label for="room_number">Enter a new username below to change it</label>
-                            <input type="usr" class="form-control" name="room_number">
+                            <input type="usr" class="form-control" name="usr">
                         </div>
-                        <div class="col-xs-6">
+<!--                         <div class="col-xs-6">
                             <br>
                             <button type="button" class="btn btn-primary">Change Username</button>
                         </div>
-                    </div>
+ -->                    </div>
                     
                     <div class="row">
                         <div class="col-xs-6">
                             <label for="room_number">Enter a new password below to change it </label>
                             <br>
-                            <input type="password" class="form-control" name="room_number">
+                            <input type="password" class="form-control" name="pwd">
                         </div>
-                        <div class="col-xs-6">
+<!--                         <div class="col-xs-6">
                             <br>
                             <button type="button" class="btn btn-primary">Change Password</button>
                         </div>
-                    </div>
+ -->                    </div>
                     
                     <br>
                     <div class="row">
                         <div class="col-xs-6"></div> <!-- for spacing -->
                         <div class="col-xs-6">
+                            <input type="submit" class="btn btn-primary" name="Change", value="Change">
                             <button type="button" class="btn btn-danger">Delete Account</button>
                         </div>
                     </div>
-
-
-
-                    <!-- TODO: Build ID method that user doesn't see for creation
-                    <label for="hotel_chain_id">Hotel Chain Id</label>
-                    <input type="number" class="form-control" name="hotel_chain_id">
-                    -->
-
-                    <!-- 
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label for="room_number">To change your password, enter a new password below</label>
-                            <input type="usr" class="form-control" name="room_number">
-                        </div>
-                        <div class="col-xs-6">
-                            <br><br>
-                            <button type="button" class="btn btn-primary">Change Password</button>
-                        </div>
-                    </div>
-
-                    <!-- End of Input Fields -->
-
-                    <!--
-                    <input type="submit" name="submit"> -->
                 </div>
             </form>
 
