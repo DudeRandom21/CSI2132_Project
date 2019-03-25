@@ -20,6 +20,8 @@
 
         if(!empty($_POST)) {
 
+            $usr = $_SESSION["usr"];
+
             $query = "UPDATE users SET ";
 
             if($_POST["usr"] != "") {
@@ -27,11 +29,14 @@
                 $_SESSION["usr"] = $_POST["usr"];
             }
             if($_POST["usr"] != "" && $_POST["pwd"] != "") {
-                $query = $query . ", and ";
+                $query = $query . ", ";
             }
             if($_POST["pwd"] != "") {
-                $query = $query . "pwd = '{$_POST["pwd"]}'";
+                $query = $query . "password = '{$_POST["pwd"]}'";
             }
+
+            $query = $query . " WHERE username = '{$usr}'";
+
             $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
         }
