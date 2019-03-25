@@ -11,8 +11,7 @@
     <?php include("header.php") ?>
 
     <div class="container-fluid">
-        <form action="#" method="post">
-            <!-- TODO: Add action location -->
+        <form method="post">
             <div class="row">
 
                 <!-- Section 1: Create Hotel Chain Panel -->
@@ -26,16 +25,11 @@
 	has_Sea_View BOOLEAN,
 	has_Mountain_View BOOLEAN,
 	Room_Capacity INTEGER,
-	Price INTEGER
+	Price INTEGER -->
                     
                     <!-- Input fields -->
                     <label for="room_number">Room Number</label>
                     <input type="usr" class="form-control" name="room_number">
-
-                    <!-- TODO: Build ID method that user doesn't see for creation
-                    <label for="hotel_chain_id">Hotel Chain Id</label>
-                    <input type="number" class="form-control" name="hotel_chain_id">
-                    -->
 
                     <label for="can_be_extended">Can be Extended</label>
                     <input type="usr" class="form-control" name="can_be_extended">

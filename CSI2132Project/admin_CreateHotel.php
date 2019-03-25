@@ -33,9 +33,8 @@
     <?php include("header.php") ?>
 
     <div class="container-fluid">
-        <!-- TODO: Add action location -->
         <div class="row">
-            <form action="#" method="post">
+            <form method="post">
 
                 <!-- Section 1: Create Hotel Chain Panel -->
                 <div class="col-xs-4">
@@ -44,11 +43,6 @@
                     <!-- Input fields -->
                     <label for="hotel_name">Hotel Name</label>
                     <input type="usr" class="form-control" name="hotel_name">
-
-                    <!-- TODO: Build ID method that user doesn't see for creation
-                    <label for="hotel_chain_id">Hotel Chain Id</label>
-                    <input type="number" class="form-control" name="hotel_chain_id">
-                    -->
 
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">

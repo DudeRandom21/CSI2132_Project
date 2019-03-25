@@ -17,7 +17,7 @@ $row = pg_fetch_row($result);
 
 //Incorect password
 if ($row[1] != $_POST["pwd"])
-	header('Location: index.php'); //TODO: give the login page some error message if this happens.
+	header('Location: index.php?action=fail');
 else {
 	//Assign session variables and continue to home page
 	$_SESSION["isEmployee"] = $_POST["isEmployee"];

@@ -44,7 +44,6 @@
     <?php include("header.php") ?>
 
     <div class="container-fluid">
-        <!-- TODO: Add action location -->
         <div class="row">
 
             <!-- Section 1: Create Hotel Chain Panel -->
