@@ -5,22 +5,34 @@
 <head>
     <?php include('common_head.php');
 
-        if(!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+        
+        if($_GET["action"] == "del") {
 
-        $query = "UPDATE users SET ";
+            $query = "DELETE FROM users WHERE username = '{$_SESSION["usr"]}'";
 
-        if($_POST["usr"] != "") {
-            $query = $query . "username = '{$_POST["usr"]}'";
-            $_SESSION["usr"] = $_POST["usr"];
+            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+            session_unset();
+
+            header('Location: index.php');
         }
-        if($_POST["usr"] != "" && $_POST["pwd"] != "") {
-            $query = $query . ", and ";
-        }
-        if($_POST["pwd"] != "") {
-            $query = $query . "pwd = '{$_POST["pwd"]}'";
-        }
-        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        if(!empty($_POST)) {
+
+            $query = "UPDATE users SET ";
+
+            if($_POST["usr"] != "") {
+                $query = $query . "username = '{$_POST["usr"]}'";
+                $_SESSION["usr"] = $_POST["usr"];
+            }
+            if($_POST["usr"] != "" && $_POST["pwd"] != "") {
+                $query = $query . ", and ";
+            }
+            if($_POST["pwd"] != "") {
+                $query = $query . "pwd = '{$_POST["pwd"]}'";
+            }
+            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
         }
 
@@ -70,7 +82,7 @@
                         <div class="col-xs-6"></div> <!-- for spacing -->
                         <div class="col-xs-6">
                             <input type="submit" class="btn btn-primary" name="Change", value="Change">
-                            <button type="button" class="btn btn-danger">Delete Account</button>
+                            <a href="?action=del" class="btn btn-danger">Delete Account</a>
                         </div>
                     </div>
                 </div>

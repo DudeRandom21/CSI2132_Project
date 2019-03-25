@@ -3,8 +3,8 @@
 <html lang="en">
 
 <head>
-    <?php include('common_head.php'); ?>
-    <?php
+    <?php include('common_head.php');
+
     if (!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 

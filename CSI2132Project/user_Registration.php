@@ -3,7 +3,31 @@
 <html lang="en">
 
 <head>
-    <?php include('common_head.php'); ?>
+    <?php include('common_head.php');
+
+    //This is a hack, it signs you out while letting me use the same link for sign up and logout
+    if($_GET["action"] = "logout" && isset($_SESSION["isEmployee"])) {
+        unset($_SESSION["isEmployee"]);
+        unset($_SESSION["usr"]);
+     
+        header('Location: index.php');
+    }
+    
+    if (!empty($_POST)) {
+        $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+        $query = "INSERT INTO users (username, password) VALUES ('{$_POST["usr"]}', '{$_POST{"pwd"}}')";
+
+        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        //Assign session variables and continue to home page
+        $_SESSION["isEmployee"] = "user";
+        $_SESSION["usr"] = $_POST["usr"];
+
+        header('Location: ./home_redirect.php');
+    }
+    ?>
+
 </head>
 
 <body>
@@ -15,31 +39,26 @@
         <div class="row">
 
             <!-- Section 1: Create Hotel Chain Panel -->
-            <form action="#" method="post">
+            <form method="post">
                 <div class="col-xs-6">
                     <h1>Create Your Account</h1>
                     <br>
 
                     <!-- Input fields -->
                     <label for="room_number">Choose Your Username</label>
-                    <input type="usr" class="form-control" name="room_number">
+                    <input type="usr" class="form-control" name="usr">
 
                     <label for="room_number">Create a Password</label>
-                    <input type="password" class="form-control" name="room_number">
+                    <input type="password" class="form-control" name="pwd">
 
                     <div class="row">
                         <div class="col-xs-6"></div>
                         <!-- For spacing -->
                         <div class="col-xs-6">
                             <br><br>
-                            <button type="button" class="btn btn-primary">Create Account</button>
+                            <input type="submit" class="btn btn-primary" value="Create Account">
                         </div>
                     </div>
-
-                    <!-- End of Input Fields -->
-
-                    <!--
-                    <input type="submit" name="submit"> -->
                 </div>
             </form>
 

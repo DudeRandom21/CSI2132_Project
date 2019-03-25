@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(!isset($_SESSION["isEmployee"])) {
+	header('Location: index.php');
+}
+
 if($_SESSION["isEmployee"] == "user") {
 	header('Location: user_HomePage.php');
 }

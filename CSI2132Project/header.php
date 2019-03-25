@@ -15,6 +15,10 @@
                 <li><a href="profile_redirect.php">Profile</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="user_Registration.php?action=logout"><?php echo (isset($_SESSION["isEmployee"]) ? "LogOut" : "Sign Up") ?></a></li>
+            </ul>
+
         </div>
         <!--/.nav-collapse -->
     </div>
