@@ -95,7 +95,7 @@
 
 
         <!-- Section 3: Table -->
-        <?php createTable("SELECT * FROM hotel", "view", "admin_CreateRoom.php");?>
+        <?php createTable("SELECT * FROM hotel WHERE hotel_chain_id = {$hotel_chain["hotel_chain_id"]}", "view", "admin_CreateRoom.php");?>
 
     </div>
 
