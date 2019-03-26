@@ -16,12 +16,12 @@
     if (!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-        $query = "INSERT INTO users (username, password) VALUES ('{$_POST["usr"]}', '{$_POST{"pwd"}}')";
+        $query = "INSERT INTO users (username, password, type) VALUES ('{$_POST["usr"]}', '{$_POST["pwd"]}', '{$_POST["type"]}')";
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
         //Assign session variables and continue to home page
-        $_SESSION["isEmployee"] = "user";
+        $_SESSION["isEmployee"] = $_POST["type"];
         $_SESSION["usr"] = $_POST["usr"];
 
         header('Location: ./home_redirect.php');
@@ -49,6 +49,13 @@
 
                     <label for="room_number">Create a Password</label>
                     <input type="password" class="form-control" name="pwd">
+
+                    <div class="container-fluid">
+                        <input type="radio" class="radioID" name="type" value="user" checked> Customer<br>
+                        <input type="radio" class="radioID" name="type" value="employee"> Employee<br>
+                        <input type="radio" class="radioID" name="type" value="admin"> Admin<br>
+                    </div>
+
 
                     <div class="row">
                         <div class="col-xs-6"></div>
