@@ -71,7 +71,7 @@
 
 
         <!-- Section 3: Table -->
-        <?php createTable("SELECT * FROM hotel_chain", "view", "admin_CreateHotel.php");?>
+        <?php createTable("SELECT * FROM hotel_chain", "view", "admin_CreateHotel.php?");?>
 
     </div>
 

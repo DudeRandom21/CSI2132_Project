@@ -87,9 +87,9 @@ CREATE TABLE Booking (
 	Time_Created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	check_in_date DATE,
 	check_out_date DATE,
-	Is_Renting BOOLEAN,
+	Is_Renting BOOLEAN DEFAULT false,
 	username VARCHAR(20),
-	Is_Paid BOOLEAN,
+	Is_Paid BOOLEAN DEFAULT false,
 	Hotel_ID INTEGER,
 	Room_Number INTEGER,
 

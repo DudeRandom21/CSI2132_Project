@@ -17,7 +17,7 @@
         }
         
         // getting hotel chain information
-        $query = "SELECT * FROM hotel_chain WHERE hotel_chain_id = '{$_GET["id"]}'";
+        $query = "SELECT * FROM hotel_chain WHERE hotel_chain_id = '{$_GET["line"]["hotel_chain_id"]}'";
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
@@ -95,7 +95,7 @@
 
 
         <!-- Section 3: Table -->
-        <?php createTable("SELECT * FROM hotel WHERE hotel_chain_id = {$hotel_chain["hotel_chain_id"]}", "view", "admin_CreateRoom.php");?>
+        <?php createTable("SELECT * FROM hotel WHERE hotel_chain_id = {$hotel_chain["hotel_chain_id"]}", "view", "admin_CreateRoom.php?");?>
 
     </div>
 
