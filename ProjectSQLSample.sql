@@ -84,7 +84,7 @@ CREATE TABLE users (
 
 CREATE TABLE Booking (
 	Booking_ID SERIAL,
-	Time_Created TIME,
+	Time_Created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	check_in_date DATE,
 	check_out_date DATE,
 	Is_Renting BOOLEAN,
