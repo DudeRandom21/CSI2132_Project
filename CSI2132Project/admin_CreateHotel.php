@@ -100,6 +100,8 @@
                 
                 <input type="submit" name="submit">
 
+                <a href="<?php echo "admin_PhoneNumbers.php?table=hotelchain_phonenumbers&id_type=hotel_chain_id&id={$hotel_chain["hotel_chain_id"]}"; ?>" class="btn btn-primary" href="">Phone Numbers</a>
+
 
             </div>
         </div>
