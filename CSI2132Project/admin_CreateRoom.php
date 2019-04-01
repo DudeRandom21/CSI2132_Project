@@ -3,7 +3,32 @@
 <html lang="en">
 
 <head>
-    <?php include('common_head.php'); ?>
+    <?php include('common_head.php');
+
+    $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+    if (!empty($_POST)) {
+        
+        $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
+                  VALUES ('{$_POST["room_number"]}',
+                          '{$_POST["can_be_extended"]}',
+                          '{$_POST["has_sea_view"]}',
+                          '{$_POST["has_mountain_view"]}',
+                          '{$_POST["room_capacity"]}',
+                          '{$_POST["price"]}')";
+        
+        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+    }
+    
+    // Get Hotel information
+    $query = "SELECT * 
+              FROM hotel
+              WHERE hotel_id = '{$_GET["line"]["hotel_id"]}'";
+
+    $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+    include("scrollable_table.php");
+    ?>
 </head>
 
 <body>
@@ -11,14 +36,14 @@
     <?php include("header.php") ?>
 
     <div class="container-fluid">
-        <form method="post">
-            <div class="row">
+        <div class="row">
+            <form method="post">
 
                 <!-- Section 1: Create Hotel Chain Panel -->
                 <div class="col-xs-4">
                     <h1>Create a Room</h1>
-                    
-    <!-- Hotel_Chain_ID INTEGER,
+
+                    <!-- Hotel_Chain_ID INTEGER,
 	Hotel_ID INTEGER,
 	Room_Number INTEGER,
 	Can_be_Extended BOOLEAN,
@@ -26,7 +51,7 @@
 	has_Mountain_View BOOLEAN,
 	Room_Capacity INTEGER,
 	Price INTEGER -->
-                    
+
                     <!-- Input fields -->
                     <label for="room_number">Room Number</label>
                     <input type="usr" class="form-control" name="room_number">
@@ -39,107 +64,69 @@
 
                     <label for="has_mountain_view">Has Mountain View</label>
                     <input type="usr" class="form-control" name="has_mountain_view">
-                    
+
                     <label for="room_capacity">Room Capacity</label>
                     <input type="number" class="form-control" name="room_capacity">
-                    
+
                     <label for="price">Price</label>
                     <input type="number" class="form-control" name="price">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">
                 </div>
+            </form>
 
 
-                <div class="col-xs-1"></div>
-                <!-- For spacing -->
+            <div class="col-xs-1"></div>
+            <!-- For spacing -->
 
 
-                <!-- Section 2: Hotel Information-->
+            <!-- Section 2: Hotel Information-->
+            <div class="col-xs-4">
+                <h1>Hotel Information</h1>
 
-                <div class="col-xs-4">
-                    <h1>Room Information</h1>
+                <!-- Information Fields-->
+                <label  for="hotel_chain_name">Hotel Address:</label>
+                <input  type="usr" class="form-control" name="hotel_address"
+                        placeholder="<?php echo $hotel["hotel_address"]; ?>">
+                
+                <label  for="central_office">Contact Email:</label>
+                <input  type="usr" class="form-control" name="contact_email"
+                        placeholder="<?php echo $hotel["contact_email"]; ?>">
+                
+                <label  for="contact_email">Rating:</label>
+                <input type="email" class="form-control" name="rating"
+                           placeholder="<?php echo $hotel["rating"]; ?>">
+                
+               
+                
+                <label  for="phone_numbers">TODO: Phone numbers</label>
+                <!-- TODO: Handle multiple phone numbers -->
+                
+                <input type="submit" name="submit">
 
-                    <!-- Information Fields-->
-                    <li>Room Number:</li>
-                    <li>Can be extended:</li>
-                    <li>Has sea view:</li>
-                    <li>Has mountain view:</li>
-                    <li>Room capacity:</li>
-                    <li>Price:</li>
-
-
-
-                </div>
-            </div>
-            <!-- End of row -->
-            <br>
-
-            <div class = "row">
-                <div class="col-xs-1"></div> <!-- used for spacing -->
-                <div class="col-xs-2">
-                    <button type="button" class="btn btn-primary">Go to Hotel</button>
-                </div>
-            </div>
-            
-            <br>
-
-
-            <!-- Section 3: Table -->
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-                <table class="table table-bordered table-striped mb-0">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
 
             </div>
 
-        </form>
+        </div>
+        <!-- End of row -->
+        <br>
+
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <!-- used for spacing -->
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-primary">Go to Hotel</button>
+            </div>
+        </div>
+
+        <br>
+
+
+        <!-- Section 3: Table -->
+        <?php createTable("SELECT * FROM room WHERE hotel_id = '{$_GET["line"]["hotel_id"]}'",
+                          "view", "admin_CreateRoom.php?");?>
+
     </div>
 
 

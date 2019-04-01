@@ -14,13 +14,20 @@
             //TODO: the query for adding a hotel goes here!
 
             $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
-        }
         
+            // 
+            $query = "INSERT INTO hotel (contact_email, rating, hotel_address)
+                  VALUES ('{$_POST["contact_email"]}',
+                          '{$_POST["rating"]}',
+                          '{$_POST["hotel_address"]}')"; // TODO: currently just name
+        }
         // getting hotel chain information
-        $query = "SELECT * FROM hotel_chain WHERE hotel_chain_id = '{$_GET["line"]["hotel_chain_id"]}'";
+        $query = "SELECT * 
+                  FROM hotel_chain 
+                  WHERE hotel_chain_id = '{$_GET["line"]["hotel_chain_id"]}'";
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
-
+            
         $hotel_chain = pg_fetch_array($result);
 
         include("scrollable_table.php");
@@ -42,7 +49,8 @@
 
                     <!-- Input fields -->
                     <label for="hotel_name">Hotel Name</label>
-                    <input type="usr" class="form-control" name="hotel_name">
+                    <input type="usr" class="form-control" name="hotel_address">
+                    <!-- TODO: Currently only used for name -->
 
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">
@@ -70,12 +78,27 @@
                 <h1>Hotel Chain Information</h1>
 
                 <!-- Information Fields-->
-                <li>Hotel Chain Name: <?php echo $hotel_chain["hotel_chain_name"]; ?></li>
-                <li>Central Office: <?php echo $hotel_chain["central_office"]; ?></li>
-                <li>Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></li>
-                <li>Contact Email: <?php echo $hotel_chain["contact_email"]; ?></li>
-                <li>TODO: Phone Numbers</li>
+                <label  for="hotel_chain_name">Hotel Chain Name:</label>
+                <input  type="usr" class="form-control" name="hotel_chain_name"
+                        placeholder="<?php echo $hotel_chain["hotel_chain_name"]; ?>">
+                
+                <label  for="central_office">Central Office:</label>
+                <input  type="usr" class="form-control" name="central_office"
+                        placeholder="<?php echo $hotel_chain["central_office"]; ?>">
+                
+                <label  for="contact_email">Contact Email:</label>
+                <input type="email" class="form-control" name="contact_email"
+                           placeholder="<?php echo $hotel_chain["contact_email"]; ?>">
+                
+                <label  for="number_of_hotels">Number of Hotels:</label>
+                    <?php 
+                        echo $hotel_chain["number_of_hotels"]; 
+                    ?>
+                
+                <label  for="phone_numbers">TODO: Phone numbers</label>
                 <!-- TODO: Handle multiple phone numbers -->
+                
+                <input type="submit" name="submit">
 
 
             </div>
@@ -90,6 +113,7 @@
                 <button type="button" class="btn btn-primary">Go to Hotel Chain</button>
             </div>
         </div>
+        
 
         <br>
 
