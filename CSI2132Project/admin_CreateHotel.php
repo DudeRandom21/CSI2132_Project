@@ -49,11 +49,11 @@
 
                     <!-- Input fields -->
                     <label for="hotel_name">Hotel Name</label>
-                    <input type="usr" class="form-control" name="hotel_address">
+                    <input type="usr" class="form-control" name="hotel_name">
                     <!-- TODO: Currently only used for name -->
 
                     <label for="city">Hotel City</label>
-                    <input type="email" class="form-control" name="city">
+                    <input type="email" class="form-control" name="hotel_city">
 
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">

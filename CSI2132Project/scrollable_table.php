@@ -1,10 +1,5 @@
 <?php
 
-	function formatHead($str) {
-		return ucwords(str_replace("_", " ", $str));
-
-	}
-
 	function createTable($query, $buttonText, $buttonLocation, $method = "get") {
 
 		$db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
@@ -18,7 +13,9 @@
 		$i = 0;
 		while ($i < pg_num_fields($result)) {
 			$column = pg_field_name($result, $i);
-			echo '<th scope="col">' . ucwords(str_replace("_", " ", $column)) . '</th>';
+			if (strpos($column, 'id') === false) {
+				echo '<th scope="col">' . ucwords(str_replace("_", " ", $column)) . '</th>';
+			}
 			$i = $i + 1;			
 		}
 		echo '</thead></tr>';
@@ -28,8 +25,10 @@
 		while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 		    echo "\t<tr>\n";
 		    foreach ($line as $key => $col_value) {
-		        echo "\t\t<td>$col_value</td>\n";
-		    }
+				if (strpos($key, 'id') === false) {
+		        	echo "\t\t<td>$col_value</td>\n";
+		    	}
+			}
 
 		    //TODO: clean this up if you have time it's a little gross
 		    if ($method == "get") {

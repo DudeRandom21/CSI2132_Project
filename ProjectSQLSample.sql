@@ -23,7 +23,7 @@ CREATE TABLE Hotel (
 	Hotel_Chain_ID INTEGER,
 	Hotel_ID SERIAL,
 	Hotel_name VARCHAR(50),
-	Hotel_Address VARCHAR(50),	--This is really city
+	Hotel_City VARCHAR(50),
 	Contact_Email VARCHAR(50),
 	Number_Of_Rooms INTEGER DEFAULT 0,
 	Rating INTEGER, -- TODO: Make this 1 - 5

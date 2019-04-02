@@ -25,7 +25,7 @@
         $_GET["end_date"] = date("Y-m-d", strtotime('tomorrow'));
     
     //This is the core part of the query, it joins hotel_chain hotel and room then removes all booked rooms.
-    $tableQuery = "SELECT * FROM hotel_chain JOIN hotel ON hotel_chain.hotel_chain_id = hotel.hotel_chain_id JOIN room ON hotel.hotel_id = room.hotel_id WHERE (room.hotel_id, room.room_number) NOT IN
+    $tableQuery = "SELECT hotel_chain.hotel_chain_id, hotel.hotel_id, hotel_name, room_number, hotel.contact_email, hotel_city, rating, has_mountain_view, has_sea_view, room_capacity, price FROM hotel_chain JOIN hotel ON hotel_chain.hotel_chain_id = hotel.hotel_chain_id JOIN room ON hotel.hotel_id = room.hotel_id WHERE (room.hotel_id, room.room_number) NOT IN
     (SELECT hotel_id, room_number FROM booking WHERE '{$_GET["start_date"]}' < check_out_date AND '{$_GET["end_date"]}' > check_in_date)";
 
     //These are other optional options
@@ -36,7 +36,7 @@
         $tableQuery = $tableQuery . "AND hotel_chain.hotel_chain_name = '{$_GET["hotel_chain"]}'";
     }
     if($_GET["city"] != "") {
-        $tableQuery = $tableQuery . "AND hotel_address = '{$_GET["city"]}'";
+        $tableQuery = $tableQuery . "AND hotel_city = '{$_GET["city"]}'";
     }
     if($_GET["rating"] != "") {
         $tableQuery = $tableQuery . "AND rating >= {$_GET["rating"]}";
