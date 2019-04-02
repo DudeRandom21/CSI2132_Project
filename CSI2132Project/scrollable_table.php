@@ -1,5 +1,10 @@
 <?php
 
+	function formatHead($str) {
+		return ucwords(str_replace("_", " ", $str));
+
+	}
+
 	function createTable($query, $buttonText, $buttonLocation, $method = "get") {
 
 		$db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
@@ -8,7 +13,17 @@
 
 		echo '<div class="table-wrapper-scroll-y my-custom-scrollbar">';
 		echo '<table class="table table-bordered table-striped mb-0">';
-		// TODO: add table headers if possible (simple)
+		echo '<thead><tr>';
+		
+		$i = 0;
+		while ($i < pg_num_fields($result)) {
+			$column = pg_field_name($result, $i);
+			echo '<th scope="col">' . ucwords(str_replace("_", " ", $column)) . '</th>';
+			$i = $i + 1;			
+		}
+		echo '</thead></tr>';
+
+
 		echo '<tbody>';
 		while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 		    echo "\t<tr>\n";
@@ -32,6 +47,7 @@
 					</td>
 				</tr>';		    	
 		}
+		echo '</tbody>';
 		echo "</table>\n";
 		echo "</div>\n";		
 	}

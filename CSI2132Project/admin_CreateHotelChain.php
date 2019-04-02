@@ -48,29 +48,6 @@
 
 
             <div class="col-xs-1"></div>
-            <!-- For spacing -->
-
-
-            <!-- Section 2: Hotel Information-->
-            
-            <!--
-            <div class="col-xs-4">
-                <h1>Hotel Information</h1>
-
-                <!-- Information Fields-->
-            <!-- 
-                <li>Hotel Chain Name:</li>
-                <li>Central Office:</li>
-                <li>Number of Hotels:</li>
-                <li>Contact Email:</li>
-                <li>TODO: Phone Numbers</li>
-                <!-- TODO: Handle multiple phone numbers -->
-
-            <!--
-            </div>
-            -->
-        
-        
         </div>
         <!-- End of row -->
 
