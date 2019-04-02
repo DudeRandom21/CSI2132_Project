@@ -35,8 +35,11 @@
     if($_GET["hotel_chain"] != "") {
         $tableQuery = $tableQuery . "AND hotel_chain.hotel_chain_name = '{$_GET["hotel_chain"]}'";
     }
-    if($_GET[""] != "") { //TODO: what is category of hotel??
-        $tableQuery = $tableQuery . "AND hotel_chain_name = {$_GET[""]}";
+    if($_GET["city"] != "") {
+        $tableQuery = $tableQuery . "AND hotel_address = '{$_GET["city"]}'";
+    }
+    if($_GET["rating"] != "") {
+        $tableQuery = $tableQuery . "AND rating >= {$_GET["rating"]}";
     }
     if($_GET["total_number_of_rooms"] != "") {
         $tableQuery = $tableQuery . "AND room.hotel_id IN (SELECT hotel_id FROM room WHERE room.hotel_id = hotel.hotel_id GROUP BY hotel_id HAVING count(*) >= {$_GET["total_number_of_rooms"]})";
@@ -89,9 +92,13 @@
                     <label for="hotel_chain">Hotel Chain</label>
                     <input type="usr" class="form-control" id="hotel_chain" name="hotel_chain" value="<?php echo $_GET["hotel_chain"] ?>">
                     
+                    <!-- City -->
+                    <label for="city">City</label>
+                    <input type="usr" class="form-control" id="city" name="city" value="<?php echo $_GET["city"] ?>">
+                    
                     <!-- Category of Hotel -->
-                    <label for="category_of_hotel">Category of Hotel</label>
-                    <input type="usr" class="form-control" id="category_of_hotel" name="category_of_hotel" value="<?php echo $_GET["category_of_hotel"] ?>">
+                    <label for="rating">Minimum Rating</label>
+                    <input type="usr" class="form-control" id="rating" name="rating" value="<?php echo $_GET["rating"] ?>">
                     
                     <!-- Total number of rooms in hotel -->
                     <label for="total_number_of_rooms">Total number of rooms in hotel</label>

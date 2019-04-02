@@ -63,11 +63,7 @@
                             <label for="room_number">Enter a new username below to change it</label>
                             <input type="usr" class="form-control" name="usr">
                         </div>
-<!--                         <div class="col-xs-6">
-                            <br>
-                            <button type="button" class="btn btn-primary">Change Username</button>
-                        </div>
- -->                    </div>
+                    </div>
                     
                     <div class="row">
                         <div class="col-xs-6">
@@ -75,13 +71,10 @@
                             <br>
                             <input type="password" class="form-control" name="pwd">
                         </div>
-<!--                         <div class="col-xs-6">
-                            <br>
-                            <button type="button" class="btn btn-primary">Change Password</button>
-                        </div>
- -->                    </div>
+                    </div>
                     
                     <br>
+                    <!-- TODO: add profile modification options specific to employee onto this page -->
                     <div class="row">
                         <div class="col-xs-6"></div> <!-- for spacing -->
                         <div class="col-xs-6">

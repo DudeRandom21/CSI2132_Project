@@ -43,7 +43,7 @@
         <div class="row">
             <form method="post">
 
-                <!-- Section 1: Create Hotel Chain Panel -->
+                <!-- Section 1: Create Hotel Panel -->
                 <div class="col-xs-4">
                     <h1>Create a Hotel</h1>
 
@@ -52,11 +52,11 @@
                     <input type="usr" class="form-control" name="hotel_address">
                     <!-- TODO: Currently only used for name -->
 
+                    <label for="city">Hotel City</label>
+                    <input type="email" class="form-control" name="city">
+
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">
-
-                    <label for="number_of_rooms">Number of Rooms</label>
-                    <input type="number" class="form-control" name="number_of_rooms">
 
                     <label for="rating">Rating</label>
                     <input type="number" class="form-control" name="rating">
@@ -90,17 +90,11 @@
                 <input type="email" class="form-control" name="contact_email"
                            placeholder="<?php echo $hotel_chain["contact_email"]; ?>">
                 
-                <label  for="number_of_hotels">Number of Hotels:</label>
-                    <?php 
-                        echo $hotel_chain["number_of_hotels"]; 
-                    ?>
+                <label  for="number_of_hotels">Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></label><br>
                 
-                <label  for="phone_numbers">TODO: Phone numbers</label>
-                <!-- TODO: Handle multiple phone numbers -->
-                
-                <input type="submit" name="submit">
+                <input type="submit" name="submit" value="Update Information"><br><br>
 
-                <a href="<?php echo "admin_PhoneNumbers.php?table=hotelchain_phonenumbers&id_type=hotel_chain_id&id={$hotel_chain["hotel_chain_id"]}"; ?>" class="btn btn-primary" href="">Phone Numbers</a>
+                <a href="<?php echo "admin_PhoneNumbers.php?table=hotelchain_phonenumbers&id_type=hotel_chain_id&id={$hotel_chain["hotel_chain_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
 
             </div>

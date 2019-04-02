@@ -5,7 +5,7 @@ CREATE TABLE Hotel_Chain (
 	Hotel_Chain_ID SERIAL,
 	hotel_chain_name VARCHAR(20),
 	Central_Office VARCHAR(50),
-	-- Number_Of_Hotels INTEGER,
+	Number_Of_Hotels INTEGER DEFAULT 0,
 	Contact_Email VARCHAR(50),
 
 	PRIMARY KEY (Hotel_Chain_ID)
@@ -22,9 +22,10 @@ CREATE TABLE HotelChain_PhoneNumbers (
 CREATE TABLE Hotel (
 	Hotel_Chain_ID INTEGER,
 	Hotel_ID SERIAL,
-	Hotel_Address VARCHAR(50),
+	Hotel_name VARCHAR(50),
+	Hotel_Address VARCHAR(50),	--This is really city
 	Contact_Email VARCHAR(50),
-	-- Number_Of_Rooms INTEGER,
+	Number_Of_Rooms INTEGER DEFAULT 0,
 	Rating INTEGER, -- TODO: Make this 1 - 5
 
 	PRIMARY KEY (Hotel_ID),
@@ -37,7 +38,6 @@ CREATE TABLE Hotel_PhoneNumbers (
 
 	PRIMARY KEY (Hotel_ID, Phone_Number),
 	FOREIGN KEY (Hotel_ID) REFERENCES hotel(Hotel_ID) ON DELETE CASCADE
-
 );
 
 CREATE TABLE Room (
@@ -129,11 +129,9 @@ CREATE TABLE Archive (
 	Is_Paid BOOLEAN,
 	Room_Number INTEGER,
 	Hotel_ID INTEGER,
-	Hotel_Chain_ID INTEGER,
 
 	PRIMARY KEY (Booking_ID)
 );
---TODO: add triggers for archive creation
 
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO web;

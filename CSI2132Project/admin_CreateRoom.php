@@ -86,9 +86,13 @@
                 <h1>Hotel Information</h1>
 
                 <!-- Information Fields-->
-                <label  for="hotel_chain_name">Hotel Address:</label>
+                <label  for="hotel_name">Hotel Name:</label>
                 <input  type="usr" class="form-control" name="hotel_address"
                         placeholder="<?php echo $hotel["hotel_address"]; ?>">
+
+                <label  for="hotel_City">Hotel City:</label>
+                <input  type="usr" class="form-control" name="hotel_city"
+                        placeholder="<?php echo $hotel["hotel_city"]; ?>">
                 
                 <label  for="central_office">Contact Email:</label>
                 <input  type="usr" class="form-control" name="contact_email"
@@ -98,12 +102,12 @@
                 <input type="email" class="form-control" name="rating"
                            placeholder="<?php echo $hotel["rating"]; ?>">
                 
+                <input type="submit" name="submit" value="Update Information"><br><br>
                
                 
-                <label  for="phone_numbers">TODO: Phone numbers</label>
-                <!-- TODO: Handle multiple phone numbers -->
+                <a href="<?php echo "admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel["hotel_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
+
                 
-                <input type="submit" name="submit">
 
 
             </div>
