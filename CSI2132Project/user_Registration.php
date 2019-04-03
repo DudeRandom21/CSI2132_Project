@@ -54,7 +54,17 @@
                         <input type="radio" class="radioID" name="type" value="user" checked> Customer<br>
                         <input type="radio" class="radioID" name="type" value="employee"> Employee<br>
                         <input type="radio" class="radioID" name="type" value="admin"> Admin<br>
-                    </div>
+                    </div><br>
+                    
+                    <h5>(Only enter the following values if you are an employee)</h5>
+                    <label for="ssn">Enter your SSN</label>
+                    <input type="number" class="form-control" name="ssn">
+                    
+                    <label for="ssn">Enter your Name</label>
+                    <input type="usr" class="form-control" name="name">
+                    
+                    <label for="ssn">Enter your Hotel ID</label>
+                    <input type="number" class="form-control" name="hotel_id">
 
 
                     <div class="row">
