@@ -133,6 +133,8 @@ CREATE TABLE Archive (
 	PRIMARY KEY (Booking_ID)
 );
 
+CREATE VIEW rooms_by_area AS SELECT hotel_city, count(*) FROM hotel JOIN room ON hotel.hotel_id = room.hotel_id GROUP BY hotel_city;
+
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO web;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;

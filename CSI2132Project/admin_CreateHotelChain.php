@@ -12,7 +12,6 @@
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
     }
-    include("scrollable_table.php");
     ?>
 </head>
 

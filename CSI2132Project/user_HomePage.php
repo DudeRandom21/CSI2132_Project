@@ -3,8 +3,7 @@
 <html lang="en">
 
 <head>
-<?php include("common_head.php");
-    include("scrollable_table.php"); 
+<?php include("common_head.php"); 
 
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
     

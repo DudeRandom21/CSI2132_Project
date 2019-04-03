@@ -27,10 +27,8 @@
 
     $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
+
     $hotel = pg_fetch_array($result);
-
-
-    include("scrollable_table.php");
     ?>
 </head>
 

@@ -30,21 +30,23 @@
 		    	}
 			}
 
-		    //TODO: clean this up if you have time it's a little gross
-		    if ($method == "get") {
-			    echo '<td>
-			    		<a href="' . $buttonLocation . http_build_query(array('line' => $line)) . '" class="btn btn-primary">' . $buttonText . '</a>
-					</td>
-				</tr>';		    	
-		    }
-		    if ($method == "post")
-		    	echo '<td>
-		    			<form action="' . $buttonLocation . '" method="post">
-		    				<input type="hidden" name="line" value="' . htmlentities(serialize($line)) . '">
-		    				<input type="submit" class="btn btn-primary" name="submit" value="' . $buttonText . '">
-		    			</form>
-					</td>
-				</tr>';		    	
+			if ($buttonText != "") {
+			    //TODO: clean this up if you have time it's a little gross
+			    if ($method == "get") {
+				    echo '<td>
+				    		<a href="' . $buttonLocation . http_build_query(array('line' => $line)) . '" class="btn btn-primary">' . $buttonText . '</a>
+						</td>
+					</tr>';		    	
+			    }
+			    if ($method == "post")
+			    	echo '<td>
+			    			<form action="' . $buttonLocation . '" method="post">
+			    				<input type="hidden" name="line" value="' . htmlentities(serialize($line)) . '">
+			    				<input type="submit" class="btn btn-primary" name="submit" value="' . $buttonText . '">
+			    			</form>
+						</td>';
+				}
+				echo '</tr>';		    	
 		}
 		echo '</tbody>';
 		echo "</table>\n";
