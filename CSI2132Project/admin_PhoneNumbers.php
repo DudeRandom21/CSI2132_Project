@@ -8,11 +8,11 @@
 		
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-    if($_GET["action"] == "delete") {
+    if(isset($_GET["action"]) && ($_GET["action"] == "delete")) {
         $phone_number = unserialize($_POST["line"])["phone_number"];
     	$result = pg_query("DELETE FROM {$_GET["table"]} WHERE phone_number = {$phone_number}") or die('Query failed: ' . pg_last_error());
     }
-    if($_GET["action"] == "add") {
+    if(isset($_GET["action"]) && ($_GET["action"] == "add")) {
     	$result = pg_query("INSERT INTO {$_GET["table"]} ({$_GET["id_type"]}, phone_number) VALUES ({$_GET["id"]}, {$_POST["phone_number"]})") or die('Query failed: ' . pg_last_error());
     }
 
