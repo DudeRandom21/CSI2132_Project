@@ -130,7 +130,7 @@
 
         <!-- Section 3: Table -->
         <?php createTable("SELECT * FROM room WHERE hotel_id = '{$_GET["line"]["hotel_id"]}'",
-                          "view", "admin_CreateRoom.php?");?>
+                          "view", "admin_RoomInfoUpdate.php?");?>
 
     </div>
 
