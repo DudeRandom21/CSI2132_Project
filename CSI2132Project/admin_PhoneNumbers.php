@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-<?php include('common_head.php');
+    <?php include('common_head.php');
     include("scrollable_table.php"); 
 		
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
@@ -21,19 +21,27 @@
 
 <body>
 
-<?php include("header.php") ?>    
+    <?php include("header.php") ?>
     <!-- SECTION 1: Form -->
     <div class="container-fluid">
-	    <div class="row">
-	        <div class="col-xs-4">
-	        	<form action="<?php echo "http://{$_SERVER[HTTP_HOST]}{$_SERVER[REQUEST_URI]}&action=add"; ?>"  method="post">
-			        <label for="phone_number">New Phone Number</label>
-			        <input type="phone_number" class="form-control" id="phone_number" name="phone_number">
-    				<input type="submit" class="btn btn-primary" name="submit" value="Add">
-	        	</form>
-			</div>
-		</div>
-        <?php createTable("SELECT phone_number FROM {$_GET["table"]} WHERE {$_GET["id_type"]} = {$_GET["id"]}", "Remove", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=delete", "post"); ?>
+        <div class="row">
+            <div class="col-xs-6">
+                <form action="<?php echo " http://{$_SERVER[HTTP_HOST]}{$_SERVER[REQUEST_URI]}&action=add "; ?>" method="post">
+                    <div class="col-xs-12">
+                        <h1>Add a New Phone Number</h1>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="phone_number" class="form-control" id="phone_number" name="phone_number" placeholder="<Phone Number Here>">
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="submit" class="btn btn-primary" name="submit" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div><br>
+        <div class="col-xs-12">
+            <?php createTable("SELECT phone_number FROM {$_GET["table"]} WHERE {$_GET["id_type"]} = {$_GET["id"]}", "Remove", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=delete", "post"); ?>
+        </div>
     </div>
 
 </body>
