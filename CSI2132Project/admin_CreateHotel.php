@@ -30,7 +30,6 @@
             
         $hotel_chain = pg_fetch_array($result);
 
-        include("scrollable_table.php");
     ?>
 
 </head>

@@ -3,8 +3,7 @@
 <html lang="en">
 
 <head>
-    <?php include('common_head.php');
-        include('scrollable_table.php') ?> ?>
+    <?php include('common_head.php'); ?>
 </head>
 
 <body>
