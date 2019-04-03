@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="col-xs-6"></div>
                         <!-- For spacing -->
-                        <div class="col-xs-6">
+                        <div class="col-xs-6 pull-right">
                             <br><br>
                             <input type="submit" class="btn btn-primary" value="Create Account">
                         </div>

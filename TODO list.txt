@@ -1,15 +1,9 @@
 
   TODOs:
-
-	1. Sign-up page
-		- Employee creation
-			- Add "sun", "name", "hotel_id"
-		- 
-	2. User Profile Page
+	1. User Profile Page
 		- If user is an employee, they get additional options
 
 	2. Employee_HomePage
-		- Finish UI. (DONE)
 		- 2 Functionalities:
 			1. Query that returns table of current bookings
 			2. Query that returns rooms of your hotel based on parameters 				searched
@@ -18,15 +12,21 @@
 		- Fix PHP functionalities
 			1. Table views
 			2. "current hotel_Chain"/current_XXX
-		- 
-
 		
 	4. view_XXX
 		- Build functionality, select * table
 
-	5. Phone Number Page
-		- UI stuff.
-
 	Global:
 		- Check that ALL buttons actually do something
 		- Write report
+
+DONE:
+	- Sign-up page 
+		- Employee creation UI (DONE)
+			- Add "ssn", "name", "hotel_id"
+
+	- Employee_HomePage
+		- Finish UI. (DONE)
+	
+	- Phone Number Page (DONE)
+		- UI stuff. 
