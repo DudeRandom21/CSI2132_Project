@@ -27,6 +27,9 @@
 
     $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
+    $hotel = pg_fetch_array($result);
+
+
     include("scrollable_table.php");
     ?>
 </head>
@@ -87,8 +90,8 @@
 
                 <!-- Information Fields-->
                 <label  for="hotel_name">Hotel Name:</label>
-                <input  type="usr" class="form-control" name="hotel_address"
-                        placeholder="<?php echo $hotel["hotel_address"]; ?>">
+                <input  type="usr" class="form-control" name="hotel_name"
+                        placeholder="<?php echo $hotel["hotel_name"]; ?>">
 
                 <label  for="hotel_City">Hotel City:</label>
                 <input  type="usr" class="form-control" name="hotel_city"
