@@ -52,7 +52,7 @@
                     <!-- TODO: Currently only used for name -->
 
                     <label for="city">Hotel City</label>
-                    <input type="email" class="form-control" name="hotel_city">
+                    <input type="usr" class="form-control" name="hotel_city">
 
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">
@@ -89,7 +89,9 @@
                 <input type="email" class="form-control" name="contact_email"
                            placeholder="<?php echo $hotel_chain["contact_email"]; ?>">
                 
-                <label  for="number_of_hotels">Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></label><br>
+                <label  for="number_of_hotels">Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></label>
+                
+                <br>
                 
                 <input type="submit" name="submit" value="Update Information"><br><br>
 
@@ -105,7 +107,7 @@
             <div class="col-xs-1"></div>
             <!-- used for spacing -->
             <div class="col-xs-2">
-                <button type="button" class="btn btn-primary">Go to Hotel Chain</button>
+                <a href="admin_CreateHotelChain.php" class="btn btn-primary">Back to Hotel Chain</a>
             </div>
         </div>
         

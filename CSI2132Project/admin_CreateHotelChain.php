@@ -8,7 +8,9 @@
     if (!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-        $query = "INSERT INTO hotel_chain (hotel_chain_name, central_office, contact_email) VALUES ('{$_POST["hotel_chain_name"]}', '{$_POST["central_office"]}', '{$_POST["contact_email"]}')";
+        $query = "INSERT INTO hotel_chain (hotel_chain_name, central_office, contact_email) 
+                  VALUES ('{$_POST["hotel_chain_name"]}',                             '{$_POST["central_office"]}',       
+                          '{$_POST["contact_email"]}')";
 
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
     }
@@ -44,6 +46,7 @@
                 </div>
             </form>
 
+            <!-- http://localhost:8080/admin_CreateHotel.php?line%5Bhotel_chain_id%5D=1&line%5Bhotel_chain_name%5D=Holiday+Inn&line%5Bcentral_office%5D=Washington&line%5Bnumber_of_hotels%5D=0&line%5Bcontact_email%5D=Holiday_Inn%40Holiday_Inn.com -->
 
 
             <div class="col-xs-1"></div>

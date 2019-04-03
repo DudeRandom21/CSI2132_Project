@@ -87,28 +87,24 @@
                 <h1>Hotel Information</h1>
 
                 <!-- Information Fields-->
-                <label  for="hotel_name">Hotel Name:</label>
-                <input  type="usr" class="form-control" name="hotel_name"
-                        placeholder="<?php echo $hotel["hotel_name"]; ?>">
+                <label for="hotel_name">Hotel Name:</label>
+                <input type="usr" class="form-control" name="hotel_name" placeholder="<?php echo $hotel["hotel_name"]; ?>">
 
-                <label  for="hotel_City">Hotel City:</label>
-                <input  type="usr" class="form-control" name="hotel_city"
-                        placeholder="<?php echo $hotel["hotel_city"]; ?>">
-                
-                <label  for="central_office">Contact Email:</label>
-                <input  type="usr" class="form-control" name="contact_email"
-                        placeholder="<?php echo $hotel["contact_email"]; ?>">
-                
-                <label  for="contact_email">Rating:</label>
-                <input type="email" class="form-control" name="rating"
-                           placeholder="<?php echo $hotel["rating"]; ?>">
-                
+                <label for="hotel_City">Hotel City:</label>
+                <input type="usr" class="form-control" name="hotel_city" placeholder="<?php echo $hotel["hotel_city"]; ?>">
+
+                <label for="central_office">Contact Email:</label>
+                <input type="usr" class="form-control" name="contact_email" placeholder="<?php echo $hotel["contact_email"]; ?>">
+
+                <label for="contact_email">Rating:</label>
+                <input type="email" class="form-control" name="rating" placeholder="<?php echo $hotel["rating"]; ?>">
+
                 <input type="submit" name="submit" value="Update Information"><br><br>
-               
-                
-                <a href="<?php echo "admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel["hotel_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
-                
+
+                <a href="<?php echo " admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel[ "hotel_id"]} "; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
+
+
 
 
             </div>
@@ -121,7 +117,7 @@
             <div class="col-xs-1"></div>
             <!-- used for spacing -->
             <div class="col-xs-2">
-                <button type="button" class="btn btn-primary">Go to Hotel</button>
+                <a href="admin_CreateHotelChain.php" class="btn btn-primary">Back to Hotel Chain</a>
             </div>
         </div>
 
