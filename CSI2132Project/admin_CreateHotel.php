@@ -16,10 +16,11 @@
             $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
         
             // 
-            $query = "INSERT INTO hotel (contact_email, rating, hotel_address)
-                  VALUES ('{$_POST["contact_email"]}',
-                          '{$_POST["rating"]}',
-                          '{$_POST["hotel_address"]}')"; // TODO: currently just name
+            $query = "INSERT INTO hotel (hotel_name, hotel_city, contact_email, rating)
+                  VALUES ('{$_POST["hotel_name"]}',
+                          '{$_POST["hotel_city"]}',
+                          '{$_POST["contact_email"]}',
+                          '{$_POST["rating"]}')";
         }
         // getting hotel chain information
         $query = "SELECT * 

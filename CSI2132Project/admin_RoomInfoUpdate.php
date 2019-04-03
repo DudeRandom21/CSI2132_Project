@@ -41,12 +41,8 @@
         <div class="row">
             <form method="post">
 
-
-
-
                 <div class="col-xs-1"></div>
                 <!-- For spacing -->
-
 
                 <!-- Section 2: Hotel Information-->
                 <div class="col-xs-4">
@@ -69,17 +65,11 @@
                     <input type="number" class="form-control" name="price" placeholder="<?php echo $room["price"]; ?>">
 
                     <input type="submit" name="submit" value="Update Information"><br><br>
-
-
-                    <a href="<?php echo " admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel[ "hotel_id"]} "; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
-
-
-
-
+                    
                 </div>
-
+            </form>
         </div>
-        <!-- End of row -->
+        
         <br>
 
         <div class="row">
@@ -91,10 +81,7 @@
         </div>
 
         <br>
-
     </div>
-    </div>
-
 
 
 </body>
