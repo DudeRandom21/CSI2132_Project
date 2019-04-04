@@ -22,7 +22,7 @@
             if (isset($_POST["hotel_chain_name"])) {
                 foreach ($_POST as $key => $value) {
                     if ($value != "" && $key != "submit") {
-                        $result = pg_query($db_connection, "UPDATE hotel_chain SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . "") or die('Query failed: ' . pg_last_error());
+                        $result = pg_query($db_connection, "UPDATE hotel_chain SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . " WHERE hotel_chain_id = {$_GET["line"]["hotel_chain_id"]}") or die('Query failed: ' . pg_last_error());
                     }
                 }
             }
