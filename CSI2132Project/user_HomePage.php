@@ -28,10 +28,11 @@
     (SELECT hotel_id, room_number FROM booking WHERE '{$_GET["start_date"]}' < check_out_date AND '{$_GET["end_date"]}' > check_in_date)";
 
     //These are other optional options
-    if($_GET["room_capacity"] != "") {
+    
+    if(!isset($_GET["room_capacity"]) && ($_GET["room_capacity"] != "")) {
         $tableQuery = $tableQuery . "AND room_capacity >= {$_GET["room_capacity"]}";
     }
-    if($_GET["hotel_chain"] != "") {
+    if(!isset($_GET["hotel_chain"]) && ($_GET["hotel_chain"] != "")) {
         $tableQuery = $tableQuery . "AND hotel_chain.hotel_chain_name = '{$_GET["hotel_chain"]}'";
     }
     if($_GET["city"] != "") {
@@ -85,29 +86,31 @@
                     
                     <!-- Room Capacity -->
                     <label for="room_capacity">Minimum Room Capacity</label>
-                    <input type="usr" class="form-control" id="room_capacity" name="room_capacity" value="<?php echo $_GET["room_capacity"] ?>">
+                    <input type="usr" class="form-control" id="room_capacity" name="room_capacity" value="<?php echo isset($_GET["room_capacity"]) ? $_GET["room_capacity"] : "" ?>">
                     
                     <!-- Hotel Chain -->
                     <label for="hotel_chain">Hotel Chain</label>
-                    <input type="usr" class="form-control" id="hotel_chain" name="hotel_chain" value="<?php echo $_GET["hotel_chain"] ?>">
+                    <input type="usr" class="form-control" id="hotel_chain" name="hotel_chain" value="<?php echo isset($_GET["hotel_chain"]) ? $_GET["hotel_chain"] : "" ?>">
                     
                     <!-- City -->
                     <label for="city">City</label>
-                    <input type="usr" class="form-control" id="city" name="city" value="<?php echo $_GET["city"] ?>">
+                    <input type="usr" class="form-control" id="city" name="city" value="<?php echo isset($_GET["city"]) ? $_GET["city"] : "" ?>">
                     
                     <!-- Category of Hotel -->
                     <label for="rating">Minimum Rating</label>
-                    <input type="usr" class="form-control" id="rating" name="rating" value="<?php echo $_GET["rating"] ?>">
+                    <input type="usr" class="form-control" id="rating" name="rating" value="<?php echo isset($_GET["rating"]) ? $_GET["rating"] : "" ?>">
                     
                     <!-- Total number of rooms in hotel -->
                     <label for="total_number_of_rooms">Total number of rooms in hotel</label>
-                    <input type="usr" class="form-control" id="total_number_of_rooms" name="total_number_of_rooms" value="<?php echo $_GET["total_number_of_rooms"] ?>">
+                    <input type="usr" class="form-control" id="total_number_of_rooms" name="total_number_of_rooms" value="<?php echo isset($_GET["total_number_of_rooms"]) ? $_GET["total_number_of_rooms"] : "" ?>">
                     
                     <!-- Price of the rooms-->
                     <label for="price_of_room">Price of rooms</label>
-                    <input type="usr" class="form-control" id="price_of_room" name="price_of_room" value="<?php echo $_GET["price_of_room"] ?>">
+                    <input type="usr" class="form-control" id="price_of_room" name="price_of_room" value="<?php echo isset($_GET["price_of_room"]) ? $_GET["price_of_room"] : "" ?>">
+                    <br>
                     
-                    <input type="submit" value="Search">
+                    <input type="submit" class="btn btn-primary" value="Search">
+                    <br>
                 </div>
                 <div class="col-xs-8">
                     <h1>Your Bookings</h1><br><br>
@@ -115,7 +118,13 @@
                 </div>
             </div>
         </form>
-        <?php createTable($tableQuery, "Book Now!", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=book", "post"); ?>
+        <br><br>
+        <div class="row">
+            <div class="col-xs-12">
+                <?php createTable($tableQuery, "Book Now!", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=book", "post"); ?>
+            </div>
+        </div>
+        <br>
     </div>
     
 </body>

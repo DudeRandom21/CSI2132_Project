@@ -11,14 +11,17 @@
         if (!empty($_POST)) {
             //processing hotel adding if any
             if (isset($_POST["hotel_name"])) {
-                $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
-            
+                
                 $query = "INSERT INTO hotel (hotel_name, hotel_city, contact_email, rating)
                       VALUES ('{$_POST["hotel_name"]}',
                               '{$_POST["hotel_city"]}',
                               '{$_POST["contact_email"]}',
                               '{$_POST["rating"]}')";
+                
+                $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
             }
+            
             if (isset($_POST["hotel_chain_name"])) {
                 foreach ($_POST as $key => $value) {
                     if ($value != "" && $key != "submit") {
