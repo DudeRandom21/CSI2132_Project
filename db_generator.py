@@ -10,9 +10,9 @@ def underscore(str):
 
 def create_hotels(file, hotel_chains, hotels, rooms, locations):
 	for i, chain in enumerate(hotel_chains):
-		file.write("INSERT INTO hotel_chain (hotel_chain_name, central_office, contact_email) VALUES ('%s', '%s', '%s@%s.com');\n" % (chain, "Washington", underscore(chain), underscore(chain)));
+		file.write("INSERT INTO hotel_chain (hotel_chain_id, hotel_chain_name, central_office, contact_email) VALUES (%d, '%s', '%s', '%s@%s.com');\n" % (i, chain, "Washington", underscore(chain), underscore(chain)));
 		for j, (hotel, location) in enumerate(zip(hotels, locations)):
-			file.write("INSERT INTO hotel (hotel_id, hotel_name, hotel_city, contact_email, rating) VALUES (%d, '%s', '%s', '%s@%s.com', %d);\n" % (j+i*len(hotels), chain + " " + hotel, location, underscore(hotel), underscore(chain), random.randint(1, 5)))
+			file.write("INSERT INTO hotel (hotel_chain_id, hotel_id, hotel_name, hotel_city, contact_email, rating) VALUES (%d, %d, '%s', '%s', '%s@%s.com', %d);\n" % (i, j+i*len(hotels), chain + " " + hotel, location, underscore(hotel), underscore(chain), random.randint(1, 5)))
 			for room in Rooms:
 					file.write("INSERT INTO room (hotel_id, room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price) VALUES (%d, %d, %r, %r, %r, %d, %d);\n" % (j+i*len(hotels), room, random.choice([True, False]), random.choice([True, False]), random.choice([True, False]), random.randint(2, 7), random.randint(10,20) * 10))
 
