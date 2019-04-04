@@ -8,20 +8,26 @@
     <?php
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
-        //processing hotel adding if any
         if (!empty($_POST)) {
-
-            //TODO: the query for adding a hotel goes here!
-
-            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
-        
-            // 
-            $query = "INSERT INTO hotel (hotel_name, hotel_city, contact_email, rating)
-                  VALUES ('{$_POST["hotel_name"]}',
-                          '{$_POST["hotel_city"]}',
-                          '{$_POST["contact_email"]}',
-                          '{$_POST["rating"]}')";
+            //processing hotel adding if any
+            if (isset($_POST["hotel_name"])) {
+                $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+            
+                $query = "INSERT INTO hotel (hotel_name, hotel_city, contact_email, rating)
+                      VALUES ('{$_POST["hotel_name"]}',
+                              '{$_POST["hotel_city"]}',
+                              '{$_POST["contact_email"]}',
+                              '{$_POST["rating"]}')";
+            }
+            if (isset($_POST["hotel_chain_name"])) {
+                foreach ($_POST as $key => $value) {
+                    if ($value != "" && $key != "submit") {
+                        $result = pg_query($db_connection, "UPDATE hotel_chain SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . "") or die('Query failed: ' . pg_last_error());
+                    }
+                }
+            }
         }
+
         // getting hotel chain information
         $query = "SELECT * 
                   FROM hotel_chain 
@@ -41,7 +47,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <form method="post">
+            <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
 
                 <!-- Section 1: Create Hotel Panel -->
                 <div class="col-xs-4">
@@ -77,24 +83,25 @@
             <div class="col-xs-4">
                 <h1>Hotel Chain Information</h1>
 
-                <!-- Information Fields-->
-                <label  for="hotel_chain_name">Hotel Chain Name:</label>
-                <input  type="usr" class="form-control" name="hotel_chain_name"
-                        placeholder="<?php echo $hotel_chain["hotel_chain_name"]; ?>">
-                
-                <label  for="central_office">Central Office:</label>
-                <input  type="usr" class="form-control" name="central_office"
-                        placeholder="<?php echo $hotel_chain["central_office"]; ?>">
-                
-                <label  for="contact_email">Contact Email:</label>
-                <input type="email" class="form-control" name="contact_email"
-                           placeholder="<?php echo $hotel_chain["contact_email"]; ?>">
-                
-                <label  for="number_of_hotels">Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></label>
-                
-                <br>
-                
-                <input type="submit" name="submit" value="Update Information"><br><br>
+                <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
+                    <!-- Information Fields-->
+                    <label  for="hotel_chain_name">Hotel Chain Name:</label>
+                    <input  type="usr" class="form-control" name="hotel_chain_name"
+                            placeholder="<?php echo $hotel_chain["hotel_chain_name"]; ?>">
+                    
+                    <label  for="central_office">Central Office:</label>
+                    <input  type="usr" class="form-control" name="central_office"
+                            placeholder="<?php echo $hotel_chain["central_office"]; ?>">
+                    
+                    <label  for="contact_email">Contact Email:</label>
+                    <input type="email" class="form-control" name="contact_email"
+                               placeholder="<?php echo $hotel_chain["contact_email"]; ?>">
+                    
+                    <label  for="number_of_hotels">Number of Hotels: <?php echo $hotel_chain["number_of_hotels"]; ?></label>
+                    <br>
+                    
+                    <input type="submit" name="submit" value="Update Information"><br><br>
+                </form>
 
                 <a href="<?php echo "admin_PhoneNumbers.php?table=hotelchain_phonenumbers&id_type=hotel_chain_id&id={$hotel_chain["hotel_chain_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
