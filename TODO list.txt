@@ -4,38 +4,37 @@
 		- If user is an employee, they get additional options
 
 	2. Employee_HomePage
-		- 2 Functionalities:
-			1. Query that returns table of current bookings
-			2. Query that returns rooms of your hotel based on parameters 				searched
+		- Bug check quickly
+		
 
 	3. Admin_XXX
 		- Fix PHP functionalities
 			1. Table views
 			2. "current hotel_Chain"/current_XXX
-		
-	4. view_XXX
-		- Build functionality, select * table
 
-	5. admin_RoomInformation Page:
-		- Build admin room page
-			Functionality:
-				1. Load the room information
-				2. Allow it to be updated/changed
+				
+|------------------------------------------------------------------------------------------------------------------------|
+
 
 	Global:
 		- Check that ALL buttons actually do something
 		- Write report
+		- Any deletion features
 
 	Extras:
+		- Make the admin_XXX "back" buttons WORK dynamically.
 		- When duplicate username is attempted to be created, return 
 		"already exists"
 		- admin_XXX Add radio buttons for boolean values ie// "has_sea_view"
 
 	BUGS:
-		- Submit bug occurring on admin_XXX pages:
-			- When you press submit, error is thrown. It is being caused by
-			the primary key ie// hotel_chain_id starting at 1, instead of
-			being at the appropriate value ie// 5 for next new hotel chain.
+		- User HomePage:
+			- "delete booking" is not working
+		- Low Priority:
+			- On user_HomePage it throws "undefined" on Nicks computer for all attributes
+
+|------------------------------------------------------------------------------------------------------------------------|
+
 
 DONE:
 	- Sign-up page 
@@ -47,3 +46,22 @@ DONE:
 	
 	- Phone Number Page (DONE)
 		- UI stuff. 
+
+	- view_XXX
+		- Build functionality, select * table
+
+	- Build admin room page
+			Functionality:
+				1. Load the room information
+				2. Allow it to be updated/changed
+
+	- Employee_HomePage
+		- 2 Functionalities:
+			1. Query that returns table of current bookings (1/2 DONE)
+			2. Query that returns rooms of your hotel based on parameters searched (DONE)
+			3. DEAL WITH TABLE BUG
+
+	- Submit bug occurring on admin_XXX pages:
+			- When you press submit, error is t=hrown. It is being caused by
+			the primary key ie// hotel_chain_id starting at 1, instead of
+			being at the appropriate value ie// 5 for next new hotel chain. (DONE)

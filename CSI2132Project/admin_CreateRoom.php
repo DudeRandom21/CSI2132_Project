@@ -8,25 +8,31 @@
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
     if (!empty($_POST)) {
-        if (!isset($_POST["action"])) {
-
-        
-        $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
+        if (isset($_POST["room_number"])){
+            $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
                   VALUES ('{$_POST["room_number"]}',
                           '{$_POST["can_be_extended"]}',
                           '{$_POST["has_sea_view"]}',
                           '{$_POST["has_mountain_view"]}',
                           '{$_POST["room_capacity"]}',
                           '{$_POST["price"]}')";
-        
-        $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+            
+            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
         }
+        
+        if (isset($_POST["hotel_name"])) {
+            foreach ($_POST as $key => $value) {
+                if ($value != "" && $key != "submit") {
+                    $result = pg_query($db_connection, "UPDATE hotel SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . " WHERE hotel_id = {$_GET["line"]["hotel_id"]}") or die('Query failed: ' . pg_last_error());
+                }
+            }
+        }
+        
         if ($_POST["action"] == "delete") {
             $result = pg_query($db_connection, "DELETE FROM hotel WHERE hotel_id = {$_GET["line"]["hotel_id"]}");
             header("Location: admin_CreateHotelChain.php");
         }
-
     }
     
     // Get Hotel information
@@ -94,24 +100,25 @@
             <!-- Section 2: Hotel Information-->
             <div class="col-xs-4">
                 <h1>Hotel Information</h1>
+                <form action="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" method="post">
 
-                <!-- Information Fields-->
-                <label for="hotel_name">Hotel Name:</label>
-                <input type="usr" class="form-control" name="hotel_name" placeholder="<?php echo $hotel["hotel_name"]; ?>">
+                    <!-- Information Fields-->
+                    <label for="hotel_name">Hotel Name:</label>
+                    <input type="usr" class="form-control" name="hotel_name" placeholder="<?php echo $hotel["hotel_name"]; ?>">
 
-                <label for="hotel_City">Hotel City:</label>
-                <input type="usr" class="form-control" name="hotel_city" placeholder="<?php echo $hotel["hotel_city"]; ?>">
+                    <label for="hotel_City">Hotel City:</label>
+                    <input type="usr" class="form-control" name="hotel_city" placeholder="<?php echo $hotel["hotel_city"]; ?>">
 
-                <label for="central_office">Contact Email:</label>
-                <input type="usr" class="form-control" name="contact_email" placeholder="<?php echo $hotel["contact_email"]; ?>">
+                    <label for="central_office">Contact Email:</label>
+                    <input type="email" class="form-control" name="contact_email" placeholder="<?php echo $hotel["contact_email"]; ?>">
 
-                <label for="contact_email">Rating:</label>
-                <input type="email" class="form-control" name="rating" placeholder="<?php echo $hotel["rating"]; ?>">
+                    <label for="contact_email">Rating:</label>
+                    <input type="number" class="form-control" name="rating" placeholder="<?php echo $hotel["rating"]; ?>">
 
-                <input type="submit" name="submit" value="Update Information"><br><br>
+                    <input type="submit" name="submit" value="Update Information"><br><br>
+                </form>
 
-
-                <a href="<?php echo " admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel[ "hotel_id"]} "; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
+                <a href="<?php echo "admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel["hotel_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
                 <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
                     <input type="hidden" name="action" value="delete">
