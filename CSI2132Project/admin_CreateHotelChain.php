@@ -35,9 +35,6 @@
                     <label for="central_office">Central Office</label>
                     <input type="usr" class="form-control" name="central_office">
 
-                    <label for="number_of_hotels">Number of Hotels</label>
-                    <input type="number" class="form-control" name="number_of_hotels">
-
                     <label for="contact_email">Contact Email</label>
                     <input type="email" class="form-control" name="contact_email">
                     <!-- End of Input Fields -->

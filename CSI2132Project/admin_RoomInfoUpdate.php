@@ -8,6 +8,7 @@
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
     if (!empty($_POST)) {
+        if (!isset($_POST["action"])) {
         
         $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
                   VALUES ('{$_POST["room_number"]}',
@@ -18,6 +19,12 @@
                           '{$_POST["price"]}')";
         
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        }
+        if ($_POST["action"] == "delete") {
+            $result = pg_query($db_connection, "DELETE FROM room WHERE hotel_id = {$_GET["line"]["hotel_id"]} AND room_number = {$_GET["line"]["room_number"]}");
+            header("Location: admin_CreateHotelChain.php");
+        }
     }
     
     // Get Hotel information
@@ -49,6 +56,7 @@
                     <h1>Room Information</h1>
 
                     <!-- Information Fields-->
+                    <h3>Room Number: <?php echo $_GET["line"]["room_number"] ?></h3>
                     <label for="can_be_extended">Can Be Extended?</label>
                     <input type="usr" class="form-control" name="can_be_extended" placeholder="<?php echo $room["can_be_extended"]; ?>">
 
@@ -77,6 +85,12 @@
             <!-- used for spacing -->
             <div class="col-xs-2">
                 <a href="admin_CreateHotelChain.php" class="btn btn-primary">Back to Hotel Chain</a> 
+                <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="submit" class="btn btn-danger" name="submit" value="Delete Room">
+                </form>
+
+
             </div>
         </div>
 

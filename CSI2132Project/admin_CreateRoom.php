@@ -8,6 +8,8 @@
     $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 
     if (!empty($_POST)) {
+        if (!isset($_POST["action"])) {
+
         
         $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
                   VALUES ('{$_POST["room_number"]}',
@@ -18,6 +20,13 @@
                           '{$_POST["price"]}')";
         
         $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+        }
+        if ($_POST["action"] == "delete") {
+            $result = pg_query($db_connection, "DELETE FROM hotel WHERE hotel_id = {$_GET["line"]["hotel_id"]}");
+            header("Location: admin_CreateHotelChain.php");
+        }
+
     }
     
     // Get Hotel information
@@ -104,15 +113,13 @@
 
                 <a href="<?php echo " admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel[ "hotel_id"]} "; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
-
-
-
+                <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="submit" class="btn btn-danger" name="submit" value="Delete Hotel">
+                </form>
             </div>
-
         </div>
         <!-- End of row -->
-        <br>
-
         <div class="row">
             <div class="col-xs-1"></div>
             <!-- used for spacing -->

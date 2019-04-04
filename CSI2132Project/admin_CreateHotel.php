@@ -26,6 +26,10 @@
                     }
                 }
             }
+            if ($_POST["action"] == "delete") {
+                $result = pg_query($db_connection, "DELETE FROM hotel_chain WHERE hotel_chain_id = {$_GET["line"]["hotel_chain_id"]}");
+                header("Location: admin_CreateHotelChain.php");
+            }
         }
 
         // getting hotel chain information
@@ -104,6 +108,11 @@
                 </form>
 
                 <a href="<?php echo "admin_PhoneNumbers.php?table=hotelchain_phonenumbers&id_type=hotel_chain_id&id={$hotel_chain["hotel_chain_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
+
+                <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="submit" class="btn btn-danger" name="submit" value="Delete Hotel Chain">
+                </form>
 
 
             </div>
