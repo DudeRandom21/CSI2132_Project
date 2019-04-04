@@ -63,7 +63,7 @@ language plpgsql;
 CREATE OR REPLACE FUNCTION update_archive() RETURNS trigger AS
 $body$
 BEGIN
-	UPDATE archive SET Time_Created = NEW.Time_Created, check_in_date = NEW.check_in_date, check_out_date = NEW.check_out_date, Is_Renting = NEW.Is_Renting, username = NEW.username, Is_Paid = NEW.Is_Paid, Room_Number = NEW.Room_Number, Hotel_ID = NEW.Hotel_ID, Hotel_Chain_ID = NEW.Hotel_Chain_ID WHERE Booking_ID = NEW.Booking_ID;
+	UPDATE archive SET Time_Created = NEW.Time_Created, check_in_date = NEW.check_in_date, check_out_date = NEW.check_out_date, Is_Renting = NEW.Is_Renting, username = NEW.username, Is_Paid = NEW.Is_Paid, Room_Number = NEW.Room_Number, Hotel_ID = NEW.Hotel_ID WHERE Booking_ID = NEW.Booking_ID;
 	RETURN NEW;
 END;
 $body$

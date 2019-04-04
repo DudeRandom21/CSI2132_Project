@@ -9,12 +9,14 @@
     if($_GET["action"] = "logout" && isset($_SESSION["isEmployee"])) {
         unset($_SESSION["isEmployee"]);
         unset($_SESSION["usr"]);
+        unset($_SESSION["hotel_id"]);
      
         header('Location: index.php');
     }
     
     if (!empty($_POST)) {
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
 
         $query = "INSERT INTO users (username, password, type) VALUES ('{$_POST["usr"]}', '{$_POST["pwd"]}', '{$_POST["type"]}')";
 
@@ -23,6 +25,14 @@
         //Assign session variables and continue to home page
         $_SESSION["isEmployee"] = $_POST["type"];
         $_SESSION["usr"] = $_POST["usr"];
+
+        if ($_POST["type"] == "employee") {
+            $employeeQuery = "INSERT INTO employee (ssn, name, username, hotel_id) VALUES ({$_POST["ssn"]}, '{$_POST["usr"]}', '{$_POST["name"]}', {$_POST["hotel_id"]})";
+
+            $result = pg_query($db_connection, $employeeQuery) or die('Query failed: ' . pg_last_error());
+
+            $_SESSION["hotel_id"] = $_POST["hotel_id"];
+        }
 
         header('Location: ./home_redirect.php');
     }

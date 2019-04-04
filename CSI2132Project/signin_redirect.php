@@ -19,6 +19,12 @@ else {
 	$_SESSION["isEmployee"] = $row["type"];
 	$_SESSION["usr"] = $_POST["usr"];
 
+	if ($_SESSION["isEmployee"] == "employee") {
+		$result = pg_query($db_connection, "SELECT * FROM employee WHERE username = '{$_SESSION["usr"]}'");
+		$row = pg_fetch_array($result);
+		$_SESSION["hotel_id"] = $row["hotel_id"];
+	}
+
 	header('Location: ./home_redirect.php');	
 }
 
