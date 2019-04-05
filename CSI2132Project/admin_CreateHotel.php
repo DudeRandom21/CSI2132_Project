@@ -12,11 +12,13 @@
             //processing hotel adding if any
             if (isset($_POST["hotel_name"])) {
                 
-                $query = "INSERT INTO hotel (hotel_name, hotel_city, contact_email, rating)
-                      VALUES ('{$_POST["hotel_name"]}',
+                $query = "INSERT INTO hotel (hotel_chain_id, hotel_name, hotel_city, hotel_contact_email, rating, manager_ssn)
+                      VALUES ('{$_GET["line"]["hotel_chain_id"]}',
+                              '{$_POST["hotel_name"]}',
                               '{$_POST["hotel_city"]}',
                               '{$_POST["contact_email"]}',
-                              '{$_POST["rating"]}')";
+                              '{$_POST["rating"]}',
+                              '{$_POST["manager_ssn"]}')";
                 
                 $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
 
@@ -71,8 +73,11 @@
                     <label for="contact_email">Contact Email(*)</label>
                     <input type="email" class="form-control" name="contact_email" required="true">
 
-                    <label for="rating">Rating(*)</label>
+                    <label for="rating">Rating</label>
                     <input type="number" class="form-control" name="rating" required="true">
+
+                    <label for="manager_ssn">Manager SSN</label>
+                    <input type="number" class="form-control" name="manager_ssn">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

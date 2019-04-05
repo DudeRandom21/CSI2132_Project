@@ -27,11 +27,10 @@ CREATE TABLE Hotel (
 	Hotel_Contact_Email VARCHAR(50) NOT NULL,
 	Number_Of_Rooms INTEGER DEFAULT 0 NOT NULL,
 	Rating INTEGER CHECK (Rating BETWEEN 1 AND 5),
-	managerSSN NUMERIC(9),
+	manager_ssn NUMERIC(9),
 
 	PRIMARY KEY (Hotel_ID),
-	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE,
-	FOREIGN KEY managerssn REFERENCES employee(ssn) ON DELETE SET NULL
+	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Hotel_PhoneNumbers (
@@ -61,7 +60,6 @@ CREATE TABLE Room_Amenities (
 	Amenity VARCHAR(100),
 
 	PRIMARY KEY (Hotel_ID, Room_Number, Amenity),
-	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE,
 	FOREIGN KEY (hotel_id) REFERENCES Hotel(Hotel_ID) ON DELETE CASCADE,
 	FOREIGN KEY (hotel_id, Room_Number) REFERENCES Room(hotel_id, Room_Number) ON DELETE CASCADE
 );
@@ -110,6 +108,8 @@ CREATE TABLE Employee (
 	FOREIGN KEY (username) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (SSN)
 );
+ALTER TABLE hotel ADD CONSTRAINT manages_a FOREIGN KEY (manager_ssn) REFERENCES employee(ssn) ON DELETE SET NULL;
+
 
 CREATE TABLE Archive (
 	Booking_ID INTEGER,

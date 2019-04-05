@@ -113,8 +113,11 @@
                     <label for="central_office">Contact Email:</label>
                     <input type="email" class="form-control" name="contact_email" placeholder="<?php echo $hotel["contact_email"]; ?>">
 
-                    <label for="contact_email">Rating:</label>
+                    <label for="rating">Rating:</label>
                     <input type="number" class="form-control" name="rating" placeholder="<?php echo $hotel["rating"]; ?>">
+
+                    <label for="manager_ssn">Manager SSN:</label>
+                    <input type="number" class="form-control" name="manager_ssn" placeholder="<?php echo $hotel["manager_ssn"]; ?>">
 
                     <input type="submit" name="submit" value="Update Information"><br><br>
                 </form>
