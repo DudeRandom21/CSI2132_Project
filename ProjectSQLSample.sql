@@ -20,14 +20,14 @@ CREATE TABLE HotelChain_PhoneNumbers (
 );
 
 CREATE TABLE Hotel (
-	Hotel_Chain_ID INTEGER,
+	Hotel_Chain_ID INTEGER NOT NULL,
 	Hotel_ID SERIAL,
 	Hotel_name VARCHAR(50) NOT NULL,
 	Hotel_City VARCHAR(50) NOT NULL,
 	Hotel_Contact_Email VARCHAR(50) NOT NULL,
 	Number_Of_Rooms INTEGER DEFAULT 0 NOT NULL,
 	Rating INTEGER CHECK (Rating BETWEEN 1 AND 5),
-	manager_ssn NUMERIC(9),
+	manager_ssn NUMERIC(9) NOT NULL,
 
 	PRIMARY KEY (Hotel_ID),
 	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE
@@ -44,9 +44,9 @@ CREATE TABLE Hotel_PhoneNumbers (
 CREATE TABLE Room (
 	Hotel_ID INTEGER,
 	Room_Number INTEGER,
-	Can_Be_Extended BOOLEAN,
-	Has_Sea_View BOOLEAN,
-	Has_Mountain_View BOOLEAN,
+	Can_Be_Extended BOOLEAN NOT NULL,
+	Has_Sea_View BOOLEAN NOT NULL,
+	Has_Mountain_View BOOLEAN NOT NULL,
 	Room_Capacity INTEGER NOT NULL,
 	Price INTEGER NOT NULL,
 
@@ -84,13 +84,13 @@ CREATE TABLE users (
 CREATE TABLE Booking (
 	Booking_ID SERIAL,
 	Time_Created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	check_in_date DATE ,
-	check_out_date DATE,
+	check_in_date DATE NOT NULL,
+	check_out_date DATE NOT NULL,
 	Is_Renting BOOLEAN DEFAULT false,
 	username VARCHAR(20),
 	Is_Paid BOOLEAN DEFAULT false,
-	Hotel_ID INTEGER,
-	Room_Number INTEGER,
+	Hotel_ID INTEGER NOT NULL,
+	Room_Number INTEGER NOT NULL,
 
 	FOREIGN KEY (username) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE CASCADE,
@@ -99,10 +99,10 @@ CREATE TABLE Booking (
 );
 
 CREATE TABLE Employee (
-	SSN NUMERIC(9),
-	Name VARCHAR(20),
+	SSN NUMERIC(9) NOT NULL,
+	Name VARCHAR(20) NOT NULL,
 	username VARCHAR(20) NOT NULL,
-	Hotel_ID INTEGER,
+	Hotel_ID INTEGER NOT NULL,
 
 	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE SET NULL, --supposing we don't fire them if the hotel closes
 	FOREIGN KEY (username) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
