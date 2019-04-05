@@ -73,14 +73,14 @@
                     <label for="room_number">Room Number(*)</label>
                     <input type="usr" class="form-control" name="room_number" required="true">
 
-                    <label for="can_be_extended">Can be Extended</label>
-                    <input type="usr" class="form-control" name="can_be_extended">
+                    <label for="can_be_extended">Can be Extended(*)</label>
+                    <input type="usr" class="form-control" name="can_be_extended" required="true">
 
-                    <label for="has_sea_view">Has Sea View</label>
-                    <input type="usr" class="form-control" name="has_sea_view">
+                    <label for="has_sea_view">Has Sea View(*)</label>
+                    <input type="usr" class="form-control" name="has_sea_view" required="true">
 
-                    <label for="has_mountain_view">Has Mountain View</label>
-                    <input type="usr" class="form-control" name="has_mountain_view">
+                    <label for="has_mountain_view">Has Mountain View(*)</label>
+                    <input type="usr" class="form-control" name="has_mountain_view" required="true">
 
                     <label for="room_capacity">Room Capacity(*)</label>
                     <input type="number" class="form-control" name="room_capacity" required="true">
