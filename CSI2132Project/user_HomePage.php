@@ -60,6 +60,7 @@
         }
         if ($_GET["action"] == "delete") {
             $line = unserialize($_POST["line"]);
+            // echo "DELETE FROM booking WHERE booking_id = {$line["booking_id"]}"; exit;
             $result = pg_query("DELETE FROM booking WHERE booking_id = {$line["booking_id"]}") or die('Query failed: ' . pg_last_error());
         }
     }
@@ -73,9 +74,9 @@
 <?php include("header.php") ?>
     <!-- SECTION 1: Form -->
     <div class="container-fluid">
-        <form method="get">
-            <div class="row">
-                <div class="col-xs-4">
+        <div class="row">
+            <div class="col-xs-4">
+                <form method="get">
                     <h1>Find a room today!</h1>
                     <!-- Dates -->
                     <label>Welcome: <?php echo $_SESSION["usr"]; ?></label><br>
@@ -111,13 +112,13 @@
                     
                     <input type="submit" class="btn btn-primary" value="Search">
                     <br>
-                </div>
-                <div class="col-xs-8">
-                    <h1>Your Bookings</h1><br><br>
-                    <?php createTable("SELECT * FROM booking WHERE username = '{$_SESSION["usr"]}'", "Delete", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=delete", "post"); ?>
-                </div>
+                </form>
             </div>
-        </form>
+            <div class="col-xs-8">
+                <h1>Your Bookings</h1><br><br>
+                <?php createTable("SELECT * FROM booking WHERE username = '{$_SESSION["usr"]}'", "Delete", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=delete", "post"); ?>
+            </div>
+        </div>
         <br><br>
         <div class="row">
             <div class="col-xs-12">

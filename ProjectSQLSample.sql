@@ -24,9 +24,9 @@ CREATE TABLE Hotel (
 	Hotel_ID SERIAL,
 	Hotel_name VARCHAR(50),
 	Hotel_City VARCHAR(50),
-	Contact_Email VARCHAR(50),
+	Hotel_Contact_Email VARCHAR(50),
 	Number_Of_Rooms INTEGER DEFAULT 0,
-	Rating INTEGER, -- TODO: Make this 1 - 5
+	Rating INTEGER CHECK (Rating BETWEEN 1 AND 5),
 
 	PRIMARY KEY (Hotel_ID),
 	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE
@@ -54,7 +54,6 @@ CREATE TABLE Room (
 );
 
 CREATE TABLE Room_Amenities (
-	Hotel_Chain_ID INTEGER,
 	hotel_id INTEGER,
 	Room_Number INTEGER,
 	Amenity VARCHAR(100),
@@ -77,8 +76,8 @@ CREATE TABLE Room_List_of_Problems (
 
 CREATE TABLE users (
 	username VARCHAR(20),
-	password VARCHAR(20),
-	type VARCHAR(10) DEFAULT 'user',	--TODO: force this to either "user", "employee", or "admin"
+	password VARCHAR(20) NOT NULL,
+	type VARCHAR(10) DEFAULT 'user' CHECK (type IN ('user', 'employee', 'admin')),
 	PRIMARY KEY (username)
 );
 
@@ -102,7 +101,7 @@ CREATE TABLE Booking (
 CREATE TABLE Employee (
 	SSN NUMERIC(9),
 	Name VARCHAR(20),
-	username VARCHAR(20),
+	username VARCHAR(20) NOT NULL,
 	Hotel_ID INTEGER,
 
 	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE SET NULL, --supposing we don't fire them if the hotel closes
@@ -134,6 +133,7 @@ CREATE TABLE Archive (
 );
 
 CREATE VIEW rooms_by_area AS SELECT hotel_city, count(*) FROM hotel JOIN room ON hotel.hotel_id = room.hotel_id GROUP BY hotel_city;
+CREATE VIEW hotel_room_capacity AS SELECT room_number, room_capacity FROM room WHERE hotel_id = 1;
 
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO web;
