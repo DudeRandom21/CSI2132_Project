@@ -1,6 +1,6 @@
 <?php
 
-	function createTable($query, $buttonText, $buttonLocation, $method = "get") {
+	function createTable($query, $buttonText = "", $buttonLocation = "", $method = "get") {
 
 		$db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
 

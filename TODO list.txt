@@ -31,6 +31,9 @@
 			- "delete booking" is not working
 		- Low Priority:
 			- On user_HomePage it throws "undefined" on Nicks computer for all attributes
+		- User registration
+			- if employee registration fails because of incorret hotel_id, the user is still created in the db so that
+				username cannot be used anymore until the accound is deleted.
 
 |------------------------------------------------------------------------------------------------------------------------|
 

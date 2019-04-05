@@ -9,8 +9,9 @@
 
     if (!empty($_POST)) {
         if (isset($_POST["room_number"])){
-            $query = "INSERT INTO room (room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
-                  VALUES ('{$_POST["room_number"]}',
+            $query = "INSERT INTO room (hotel_id, room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price)
+                  VALUES ('{$_GET["line"]["hotel_id"]}',
+                          '{$_POST["room_number"]}',
                           '{$_POST["can_be_extended"]}',
                           '{$_POST["has_sea_view"]}',
                           '{$_POST["has_mountain_view"]}',

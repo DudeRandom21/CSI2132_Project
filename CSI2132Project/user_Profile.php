@@ -37,7 +37,36 @@
 
             $query = $query . " WHERE username = '{$usr}'";
 
-            $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+            if ($_POST["usr"] != "" || $_POST["pwd"] != "") {
+                $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+            }
+
+            if ($_SESSION["isEmployee"] == "employee") {
+
+                $query = "UPDATE employee SET ";
+
+                if($_POST["ssn"] != "") {
+                    $query = $query . "ssn = '{$_POST["ssn"]}'";
+                }
+                if($_POST["ssn"] != "" && $_POST["name"] != "") {
+                    $query = $query . ", ";
+                }
+                if($_POST["name"] != "") {
+                    $query = $query . "name = '{$_POST["name"]}'";
+                }
+                if(($_POST["ssn"] != "" || $_POST["name"] != "") && $_POST["hotel_id"] != "") {
+                    $query = $query . ", ";
+                }
+                if($_POST["hotel_id"] != "") {
+                    $query = $query . "hotel_id = {$_POST["hotel_id"]}";
+                }
+
+                $query = $query . " WHERE username = '{$usr}'";
+
+                if ($_POST["ssn"] != "" || $_POST["name"] != "" || $_POST["hotel_id"] != "") {
+                    $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+                }
+            }
 
         }
 
@@ -54,7 +83,7 @@
             <!-- Section 1: Create Hotel Chain Panel -->
             <form method="post">
                 <div class="col-xs-6">
-                    <h1> <?php echo $_SESSION["usr"] ?> Profile</h1>
+                    <h1> <?php echo $_SESSION["usr"] ?>'s Profile</h1>
                     <br>
 
                     <!-- Input fields -->
@@ -72,9 +101,29 @@
                             <input type="password" class="form-control" name="pwd">
                         </div>
                     </div>
-                    
+                    <?php
+                        if ($_SESSION["isEmployee"] == "employee") {
+                            echo '<div class="row">
+                                    <div class="col-xs-6">
+                                        <label for="ssn">Enter a new SSN below to change it</label>
+                                        <input type="number" class="form-control" name="ssn">                            
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label for="ssn">Enter a new name below to change it</label>
+                                        <input type="usr" class="form-control" name="name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label for="ssn">Enter a new hotel_id below to change it</label>
+                                        <input type="number" class="form-control" name="hotel_id">
+                                    </div>
+                                </div>';
+                        }
+                    ?>
                     <br>
-                    <!-- TODO: add profile modification options specific to employee onto this page -->
                     <div class="row">
                         <div class="col-xs-6"></div> <!-- for spacing -->
                         <div class="col-xs-6">
