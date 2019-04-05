@@ -7,7 +7,7 @@
 		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 		echo '<div class="table-wrapper-scroll-y my-custom-scrollbar">';
-		echo '<table class="table table-bordered table-striped mb-0">';
+		echo '<table class="table table-bordered mb-0">';
 		echo '<thead><tr>';
 		
 		$i = 0;

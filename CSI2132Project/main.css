@@ -5,7 +5,7 @@
 
 .my-custom-scrollbar {
   position: relative;
-  height: 200px;
+  height: 500px;
   overflow: auto;
 }
 
@@ -13,3 +13,6 @@
   display: block;
 }
 
+table, table-bordered, table-wrapper-scroll-y {
+    height: 300px;
+}
