@@ -17,14 +17,20 @@ Bug checking Pages TODO:
 
 
 	NEXT:
-	- Foreign key manager SSN not employee issue in create hotel
-	- Fix Python generator function to instantiate a managerSSN with each hotel created
+	- Fix Python generator function to instantiate a managerSSN with each hotel created (IN PROGRESS)
 	- Room Information AND Room Damages:
 		- Update information not working, returns same values
+	- View_CapacityByHotel: Has an issue with not generating an option -- because it's dependent on the first hotel
+		-Solution, check a later hotel
+
+
+
+	- Foreign key manager SSN not employee issue in create hotel(DONE)
 	- "hotel_contact_email" issue being labelled as old "contact_email" on two pages. (done)
+	- Employee_homepage UI issues (DONE)
 
 
-Check deliverable 1 to see if an employee can only manage one hotel
+
 
 
 

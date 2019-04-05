@@ -126,7 +126,7 @@ CREATE TABLE Archive (
 );
 
 CREATE VIEW rooms_by_area AS SELECT hotel_city, count(*) FROM hotel JOIN room ON hotel.hotel_id = room.hotel_id GROUP BY hotel_city;
-CREATE VIEW hotel_room_capacity AS SELECT room_number, room_capacity FROM room WHERE hotel_id = 1;
+CREATE VIEW hotel_room_capacity AS SELECT room_number, room_capacity FROM room WHERE hotel_id = 40;
 
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO web;
