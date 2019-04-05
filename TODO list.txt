@@ -9,8 +9,7 @@
 
 	3. Admin_XXX
 		- Fix PHP functionalities
-			1. Table views
-			2. "current hotel_Chain"/current_XXX
+			1. "current hotel_Chain"/current_XXX
 
 				
 |------------------------------------------------------------------------------------------------------------------------|
