@@ -27,7 +27,7 @@ CREATE TABLE Hotel (
 	Hotel_Contact_Email VARCHAR(50) NOT NULL,
 	Number_Of_Rooms INTEGER DEFAULT 0 NOT NULL,
 	Rating INTEGER CHECK (Rating BETWEEN 1 AND 5),
-	manager_ssn NUMERIC(9) NOT NULL,
+	manager_ssn NUMERIC(9),
 
 	PRIMARY KEY (Hotel_ID),
 	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE

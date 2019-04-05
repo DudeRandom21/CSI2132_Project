@@ -70,14 +70,14 @@
                     <label for="city">Hotel City(*)</label>
                     <input type="usr" class="form-control" name="hotel_city" required="true">
 
-                    <label for="contact_email">Contact Email(*)</label>
-                    <input type="email" class="form-control" name="contact_email" required="true">
+                    <label for="hotel_contact_email">Contact Email(*)</label>
+                    <input type="email" class="form-control" name="hotel_contact_email" required="true">
 
-                    <label for="rating">Rating</label>
+                    <label for="rating">Rating(*)</label>
                     <input type="number" class="form-control" name="rating" required="true">
 
-                    <label for="manager_ssn">Manager SSN</label>
-                    <input type="number" class="form-control" name="manager_ssn">
+                    <label for="manager_ssn">Manager SSN(*)</label>
+                    <input type="number" class="form-control" name="manager_ssn" required="true">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

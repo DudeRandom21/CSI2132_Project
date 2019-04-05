@@ -61,7 +61,7 @@
                     <input type="password" class="form-control" name="pwd" required="true">
 
                     <div class="container-fluid">
-                        <input type="radio" class="radioID" name="type" value="user" id="hidemenu"> Customer<br>
+                        <input type="radio" checked="" class="radioID" name="type" value="user" id="hidemenu"> Customer<br>
                         <input type="radio" class="radioID" name="type" value="employee" id="showmenu"> Employee<br>
                         <input type="radio" class="radioID" name="type" value="admin" id="hidemenu2"> Admin<br>
                     </div><br>

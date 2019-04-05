@@ -7,6 +7,21 @@ Bug checking Pages TODO:
 	- ID regex bug fixed.
 	- Not null bug fixed. 
 	- Required field updates
+	- CreateHotelChain: good
+	- CreateHotel: 
+		- Issue with "create new hotel" for both new and pre-defined hotel chains.
+		- Update works.
+		
+ - Registration Page
+	- Javascript added to hide employee additional fields
+
+
+	NEXT:
+	- Foreign key manager SSN not employee issue in create hotel
+	- Fix Python generator function to instantiate a managerSSN with each hotel created
+	- Room Information AND Room Damages:
+		- Update information not working, returns same values
+	- "hotel_contact_email" issue being labelled as old "contact_email" on two pages. (done)
 
 
 

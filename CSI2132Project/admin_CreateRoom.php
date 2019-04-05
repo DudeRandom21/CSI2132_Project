@@ -111,7 +111,7 @@
                     <input type="usr" class="form-control" name="hotel_city" placeholder="<?php echo $hotel["hotel_city"]; ?>">
 
                     <label for="central_office">Contact Email:</label>
-                    <input type="email" class="form-control" name="contact_email" placeholder="<?php echo $hotel["contact_email"]; ?>">
+                    <input type="email" class="form-control" name="hotel_contact_email" placeholder="<?php echo $hotel["hotel_contact_email"]; ?>">
 
                     <label for="rating">Rating:</label>
                     <input type="number" class="form-control" name="rating" placeholder="<?php echo $hotel["rating"]; ?>">

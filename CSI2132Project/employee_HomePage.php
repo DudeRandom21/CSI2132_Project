@@ -68,53 +68,59 @@
     <!-- SECTION 1: Form -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4">
-                <h1>Find a Room For Your Customer</h1>
-                <label for="usr">Enter your Customer's User Name</label>
-                <form action="" method="get">
-                    <input type="usr" class="form-control" id="pwd" name="usr">
-                    <input type="submit" class="btn btn-primary" value="View Customer Bookings">
-                </form>
-                <br><br><br>
-            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-4">
+                    <h1>Find a Room For Your Customer</h1>
+                    <label for="usr">Enter your Customer's User Name</label>
+                    <form action="" method="get">
+                        <input type="usr" class="form-control" id="pwd" name="usr">
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="View Customer Bookings">
+                    </form>
+                    <br><br>
 
-            <div class="col-xs-6">
-                <h1>Your Customers Bookings</h1>
-                <form>
-                    
-                </form>
+                    <!-- Section: SEARCH BOOKINGS  -->
+                    <div class="col-xs-12">
+
+                        <h1>Search for available bookings</h1>
+                        <form method="get">
+                            <label for="start_date">Start Date</label>
+                            <input type="usr" class="form-control" id="startDate" name="start_date" value="<?php echo $_GET[" start_date "] ?>">
+                            <label for="end_date">End Date</label>
+                            <input type="usr" class="form-control" id="pwd" name="end_date" value="<?php echo $_GET["end_date"] ?>">
+
+                            <!-- Room Capacity -->
+                            <label for="room_capacity">Minimum Room Capacity</label>
+                            <input type="usr" class="form-control" id="room_capacity" name="room_capacity" value="<?php echo $_GET["room_capacity"] ?>">
+
+                            <!-- Total number of rooms in hotel -->
+                            <label for="total_number_of_rooms">Total number of rooms in hotel</label>
+                            <input type="usr" class="form-control" id="total_number_of_rooms" name="total_number_of_rooms" value="<?php echo $_GET["total_number_of_rooms"] ?>">
+
+                            <!-- Price of the rooms-->
+                            <label for="price_of_room">Price of rooms</label>
+                            <input type="usr" class="form-control" id="price_of_room" name="price_of_room" value="<?php echo $_GET["price_of_room"] ?>">
+
+                            <input type="submit" value="Search">
+                        </form>
+
+                    </div>
+                    <!-- END OF SECTION --  SEARCH BOOKINGS  -->
+                </div>
+
+                <div class="col-xs-6">
+                    <h1>Your Customers Bookings</h1>
+                    <form>
+
+                    </form>
+                </div>
+                <div class="col-xs-6">
+                    <?php createTable("SELECT * FROM booking WHERE username = '{$_GET["usr"]}'", "Confirm", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=confirm", "post"); ?>
+                </div>
             </div>
-            <div class="col-xs-6" >
-                <?php createTable("SELECT * FROM booking WHERE username = '{$_GET["usr"]}'", "Confirm", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=confirm", "post"); ?>
-            </div>        
         </div>
-        <div class="row">
-            <div class="col-xs-4">
-                
-                <h1>Search for available bookings</h1>
-                <form method="get">
-                    <label for="start_date">Start Date</label>
-                    <input type="usr" class="form-control" id="startDate" name="start_date" value="<?php echo $_GET["start_date"] ?>">
-                    <label for="end_date">End Date</label>
-                    <input type="usr" class="form-control" id="pwd" name="end_date" value="<?php echo $_GET["end_date"] ?>">
 
-                    <!-- Room Capacity -->
-                    <label for="room_capacity">Minimum Room Capacity</label>
-                    <input type="usr" class="form-control" id="room_capacity" name="room_capacity" value="<?php echo $_GET[" room_capacity "] ?>">
 
-                    <!-- Total number of rooms in hotel -->
-                    <label for="total_number_of_rooms">Total number of rooms in hotel</label>
-                    <input type="usr" class="form-control" id="total_number_of_rooms" name="total_number_of_rooms" value="<?php echo $_GET[" total_number_of_rooms "] ?>">
-
-                    <!-- Price of the rooms-->
-                    <label for="price_of_room">Price of rooms</label>
-                    <input type="usr" class="form-control" id="price_of_room" name="price_of_room" value="<?php echo $_GET[" price_of_room "] ?>">
-
-                    <input type="submit" value="Search">
-                </form>
-            </div>
-
-        </div>
         <?php createTable($tableQuery, "Book Now!", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=book", "post"); ?>
     </div>
 
