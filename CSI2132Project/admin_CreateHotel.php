@@ -12,15 +12,21 @@
             //processing hotel adding if any
             if (isset($_POST["hotel_name"])) {
                 
-                $query = "INSERT INTO hotel (hotel_chain_id, hotel_name, hotel_city, hotel_contact_email, rating, manager_ssn)
+                $query = "INSERT INTO hotel (hotel_chain_id, hotel_name, hotel_city, hotel_contact_email, rating)
                       VALUES ('{$_GET["line"]["hotel_chain_id"]}',
                               '{$_POST["hotel_name"]}',
                               '{$_POST["hotel_city"]}',
                               '{$_POST["contact_email"]}',
-                              '{$_POST["rating"]}',
-                              '{$_POST["manager_ssn"]}')";
+                              '{$_POST["rating"]}')
+                              RETURNING hotel_id";
                 
                 $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
+
+                if ($_POST["manager_ssn"] != "") {
+                    echo "test";
+                    $hotel_id = pg_fetch_array($result)["hotel_id"];
+                    $result = pg_query($db_connection, "UPDATE hotel SET manager_ssn = {$_POST["manager_ssn"]} WHERE hotel_id = {$hotel_id}");
+                }
 
             }
             

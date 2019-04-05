@@ -24,7 +24,7 @@ Bug checking Pages TODO:
 	- "hotel_contact_email" issue being labelled as old "contact_email" on two pages. (done)
 
 
-
+Check deliverable 1 to see if an employee can only manage one hotel
 
 
 
