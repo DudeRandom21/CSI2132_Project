@@ -54,28 +54,28 @@
                     <br>
 
                     <!-- Input fields -->
-                    <label for="room_number">Choose Your Username</label>
-                    <input type="usr" class="form-control" name="usr">
+                    <label for="room_number">Choose Your Username(*)</label>
+                    <input type="usr" class="form-control" name="usr" required="true">
 
-                    <label for="room_number">Create a Password</label>
-                    <input type="password" class="form-control" name="pwd">
+                    <label for="room_number">Create a Password(*)</label>
+                    <input type="password" class="form-control" name="pwd" required="true">
 
                     <div class="container-fluid">
-                        <input type="radio" class="radioID" name="type" value="user" checked> Customer<br>
-                        <input type="radio" class="radioID" name="type" value="employee"> Employee<br>
-                        <input type="radio" class="radioID" name="type" value="admin"> Admin<br>
+                        <input type="radio" class="radioID" name="type" value="user" id="hidemenu"> Customer<br>
+                        <input type="radio" class="radioID" name="type" value="employee" id="showmenu"> Employee<br>
+                        <input type="radio" class="radioID" name="type" value="admin" id="hidemenu2"> Admin<br>
                     </div><br>
                     
-                    <h5>(Only enter the following values if you are an employee)</h5>
-                    <label for="ssn">Enter your SSN</label>
-                    <input type="number" class="form-control" name="ssn">
+                    <div class="menu" style="display: none">
+                        <label for="ssn">Enter your SSN</label>
+                        <input type="number" class="form-control" name="ssn">
                     
-                    <label for="ssn">Enter your Name</label>
-                    <input type="usr" class="form-control" name="name">
+                        <label for="ssn">Enter your Name</label>
+                        <input type="usr" class="form-control" name="name">
                     
-                    <label for="ssn">Enter your Hotel ID</label>
-                    <input type="number" class="form-control" name="hotel_id">
-
+                        <label for="ssn">Enter your Hotel ID</label>
+                        <input type="number" class="form-control" name="hotel_id">
+                    </div>
 
                     <div class="row">
                         <div class="col-xs-6"></div>
@@ -98,7 +98,27 @@
         </div>
     </div>
     <!-- End of row -->
-
+    
+    <script>
+     $(document).ready(function() {
+        $('#showmenu').click(function() {
+            $('.menu').css('display', 'inline-block');
+        });
+     });
+    
+     $(document).ready(function() {
+         $('#hidemenu').click(function() {
+             $('.menu').css('display', 'none');
+         });
+     });
+    
+     $(document).ready(function() {
+         $('#hidemenu2').click(function() {
+             $('.menu').css('display', 'none');
+         });
+     });
+    </script>
+    
 
 </body>
 

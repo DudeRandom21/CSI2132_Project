@@ -1,7 +1,26 @@
 
-  TODOs:
+|------------------------------------------------------------------------------------------|
+
+
+Bug checking Pages TODO:
+ - Admin Pages:
+	- ID regex bug fixed.
+	- Not null bug fixed. 
+	- Required field updates
+
+
+
+
+
+
+
+|------------------------------------------------------------------------------------------|
+
+
+
+TODOs:
 	1. User Profile Page
-		- If user is an employee, they get additional options
+		- If user is an employee, they get additional options (DONE)
 
 	2. Employee_HomePage
 		- Bug check quickly
@@ -9,10 +28,10 @@
 
 	3. Admin_XXX
 		- Fix PHP functionalities
-			1. "current hotel_Chain"/current_XXX
+			1. "current hotel_Chain"/current_XXX (DONE)
 
 				
-|------------------------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------|
 
 
 	Global:
@@ -28,14 +47,14 @@
 
 	BUGS:
 		- User HomePage:
-			- "delete booking" is not working
+			- "delete booking" is not working  (DONE)
 		- Low Priority:
-			- On user_HomePage it throws "undefined" on Nicks computer for all attributes
+			- On user_HomePage it throws "undefined" on Nicks computer for all attributes (DONE)
 		- User registration
 			- if employee registration fails because of incorret hotel_id, the user is still created in the db so that
 				username cannot be used anymore until the accound is deleted.
 
-|------------------------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------|
 
 
 DONE:

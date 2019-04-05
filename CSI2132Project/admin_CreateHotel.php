@@ -61,18 +61,18 @@
                     <h1>Create a Hotel</h1>
 
                     <!-- Input fields -->
-                    <label for="hotel_name">Hotel Name</label>
-                    <input type="usr" class="form-control" name="hotel_name">
+                    <label for="hotel_name">Hotel Name(*)</label>
+                    <input type="usr" class="form-control" name="hotel_name" required="true">
                     <!-- TODO: Currently only used for name -->
 
-                    <label for="city">Hotel City</label>
-                    <input type="usr" class="form-control" name="hotel_city">
+                    <label for="city">Hotel City(*)</label>
+                    <input type="usr" class="form-control" name="hotel_city" required="true">
 
-                    <label for="contact_email">Contact Email</label>
-                    <input type="email" class="form-control" name="contact_email">
+                    <label for="contact_email">Contact Email(*)</label>
+                    <input type="email" class="form-control" name="contact_email" required="true">
 
-                    <label for="rating">Rating</label>
-                    <input type="number" class="form-control" name="rating">
+                    <label for="rating">Rating(*)</label>
+                    <input type="number" class="form-control" name="rating" required="true">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

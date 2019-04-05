@@ -29,14 +29,14 @@
                     <h1>Create a Hotel Chain</h1>
 
                     <!-- Input fields -->
-                    <label for="hotel_chain_name">Hotel Chain Name</label>
-                    <input type="usr" class="form-control" name="hotel_chain_name">
+                    <label for="hotel_chain_name">Hotel Chain Name(*)</label>
+                    <input type="usr" class="form-control" name="hotel_chain_name" required="true">
 
-                    <label for="central_office">Central Office</label>
-                    <input type="usr" class="form-control" name="central_office">
+                    <label for="central_office">Central Office(*)</label>
+                    <input type="usr" class="form-control" name="central_office" required="true">
 
-                    <label for="contact_email">Contact Email</label>
-                    <input type="email" class="form-control" name="contact_email">
+                    <label for="contact_email">Contact Email(*)</label>
+                    <input type="email" class="form-control" name="contact_email" required="true">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

@@ -91,8 +91,7 @@
         <div class="row">
             <div class="col-xs-4">
                 
-                <h1>Create a new Booking</h1>
-                <h3>Search for available bookings</h3>
+                <h1>Search for available bookings</h1>
                 <form method="get">
                     <label for="start_date">Start Date</label>
                     <input type="usr" class="form-control" id="startDate" name="start_date" value="<?php echo $_GET["start_date"] ?>">

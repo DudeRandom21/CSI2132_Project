@@ -70,8 +70,8 @@
 	Price INTEGER -->
 
                     <!-- Input fields -->
-                    <label for="room_number">Room Number</label>
-                    <input type="usr" class="form-control" name="room_number">
+                    <label for="room_number">Room Number(*)</label>
+                    <input type="usr" class="form-control" name="room_number" required="true">
 
                     <label for="can_be_extended">Can be Extended</label>
                     <input type="usr" class="form-control" name="can_be_extended">
@@ -82,11 +82,11 @@
                     <label for="has_mountain_view">Has Mountain View</label>
                     <input type="usr" class="form-control" name="has_mountain_view">
 
-                    <label for="room_capacity">Room Capacity</label>
-                    <input type="number" class="form-control" name="room_capacity">
+                    <label for="room_capacity">Room Capacity(*)</label>
+                    <input type="number" class="form-control" name="room_capacity" required="true">
 
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" name="price">
+                    <label for="price">Price(*)</label>
+                    <input type="number" class="form-control" name="price" required="true">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

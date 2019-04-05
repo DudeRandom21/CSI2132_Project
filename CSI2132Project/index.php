@@ -16,10 +16,12 @@
                 <div class="col-xs-4">
                     <h1>Login Page</h1>
                     <?php if($_GET["action"] == "fail") echo '<label class="text-danger">Incorrect Username/Password</label><br>'; ?>
-                    <label for="username">User name:</label>
-                    <input type="usr" class="form-control" name="usr">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" name="pwd">
+                    <label for="username">User name(*)</label>
+                    <input type="usr" class="form-control" name="usr" required="true">
+                    
+                    <label for="pwd">Password(*)</label>
+                    <input type="password" class="form-control" name="pwd" required="true">
+                    
                     <input type="submit" name="submit">
                 </div>
             </div>
