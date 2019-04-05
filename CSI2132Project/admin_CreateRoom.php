@@ -119,6 +119,7 @@
                     <input type="submit" name="submit" value="Update Information"><br><br>
                 </form>
 
+                <!-- Phone number button -->
                 <a href="<?php echo "admin_PhoneNumbers.php?table=hotel_phonenumbers&id_type=hotel_id&id={$hotel["hotel_id"]}"; ?>" class="btn btn-primary" href="">Manage Phone Numbers</a>
 
                 <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">

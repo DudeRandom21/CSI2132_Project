@@ -86,7 +86,16 @@
             <div class="col-xs-1"></div>
             <!-- used for spacing -->
             <div class="col-xs-2">
-                <a href="admin_CreateHotelChain.php" class="btn btn-primary">Back to Hotel Chain</a> 
+                 <!-- Room Amenities button -->
+                <a href="<?php echo "admin_RoomAmenities.php?table=room_amenities&id_type=room_number&id={$room["room_number"]}"; ?>" class="btn btn-primary">See Room Amenities</a>
+                
+                <!-- Room Damages button -->
+                
+                
+                <a href="admin_CreateHotelChain.php" class="btn btn-primary">Back to Hotel Chain</a>
+                
+                
+                
                 <form action="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"  method="post">
                     <input type="hidden" name="action" value="delete">
                     <input type="submit" class="btn btn-danger" name="submit" value="Delete Room">
