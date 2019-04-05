@@ -87,7 +87,8 @@
             <!-- used for spacing -->
             <div class="col-xs-2">
                  <!-- Room Amenities button -->
-                <a href="<?php echo "admin_RoomAmenities.php?table=room_amenities&id_type=room_number&id={$room["room_number"]}"; ?>" class="btn btn-primary">See Room Amenities</a>
+                <a href="<?php echo "admin_RoomAmenities.php?&room_number={$room["room_number"]}&hotel_id={$room["hotel_id"]}"; ?>" class="btn btn-primary">See Room Amenities</a>
+                <a href="<?php echo "admin_RoomProblems.php?&room_number={$room["room_number"]}&hotel_id={$room["hotel_id"]}"; ?>" class="btn btn-primary">See Room Problems</a>
                 
                 <!-- Room Damages button -->
                 

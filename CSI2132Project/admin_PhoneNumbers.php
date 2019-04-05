@@ -9,7 +9,7 @@
 
     if(isset($_GET["action"]) && ($_GET["action"] == "delete")) {
         $phone_number = unserialize($_POST["line"])["phone_number"];
-    	$result = pg_query("DELETE FROM {$_GET["table"]} WHERE phone_number = {$phone_number}") or die('Query failed: ' . pg_last_error());
+    	$result = pg_query("DELETE FROM {$_GET["table"]} WHERE phone_number = {$phone_number} AND {$_GET["id_type"]} = {$_GET["id"]}") or die('Query failed: ' . pg_last_error());
     }
     if(isset($_GET["action"]) && ($_GET["action"] == "add")) {
     	$result = pg_query("INSERT INTO {$_GET["table"]} ({$_GET["id_type"]}, phone_number) VALUES ({$_GET["id"]}, {$_POST["phone_number"]})") or die('Query failed: ' . pg_last_error());

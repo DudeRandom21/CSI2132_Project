@@ -13,7 +13,7 @@
 		$i = 0;
 		while ($i < pg_num_fields($result)) {
 			$column = pg_field_name($result, $i);
-			if (strpos($column, 'id') === false) {
+			if (strpos($column, '_id') === false) {
 				echo '<th scope="col">' . ucwords(str_replace("_", " ", $column)) . '</th>';
 			}
 			$i = $i + 1;			
@@ -25,7 +25,7 @@
 		while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 		    echo "\t<tr>\n";
 		    foreach ($line as $key => $col_value) {
-				if (strpos($key, 'id') === false) {
+				if (strpos($key, '_id') === false) {
 		        	echo "\t\t<td>$col_value</td>\n";
 		    	}
 			}
