@@ -6,6 +6,12 @@
     <?php include('common_head.php');
 
         $db_connection = pg_connect("host=localhost dbname=csi2132_project user=web password=webapp");
+
+        if ($_SESSION["isEmployee"] == "employee") {
+            $result = pg_query($db_connection, "SELECT * FROM employee WHERE username = '{$_SESSION["usr"]}'");
+
+            $employee = pg_fetch_array($result);
+        }
         
         if($_GET["action"] == "del") {
 
@@ -90,13 +96,13 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <label for="room_number">Enter a new username below to change it</label>
-                            <input type="usr" class="form-control" name="usr">
+                            <input type="usr" class="form-control" name="usr" placeholder="<?php echo $_SESSION["usr"] ?>">
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for="room_number">Enter a new password below to change it </label>
+                            <label for="room_number">Enter a new password below to change it</label>
                             <br>
                             <input type="password" class="form-control" name="pwd">
                         </div>
@@ -106,19 +112,19 @@
                             echo '<div class="row">
                                     <div class="col-xs-6">
                                         <label for="ssn">Enter a new SSN below to change it</label>
-                                        <input type="number" class="form-control" name="ssn">                            
+                                        <input type="number" class="form-control" name="ssn" placeholder="'. $employee["ssn"] . '">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <label for="ssn">Enter a new name below to change it</label>
-                                        <input type="usr" class="form-control" name="name">
+                                        <input type="usr" class="form-control" name="name" placeholder="' . $employee["name"] . '">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <label for="ssn">Enter a new hotel_id below to change it</label>
-                                        <input type="number" class="form-control" name="hotel_id">
+                                        <input type="number" class="form-control" name="hotel_id" placeholder="' . $employee["hotel_id"] . '">
                                     </div>
                                 </div>';
                         }

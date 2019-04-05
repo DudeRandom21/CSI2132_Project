@@ -27,9 +27,11 @@ CREATE TABLE Hotel (
 	Hotel_Contact_Email VARCHAR(50) NOT NULL,
 	Number_Of_Rooms INTEGER DEFAULT 0 NOT NULL,
 	Rating INTEGER CHECK (Rating BETWEEN 1 AND 5),
+	managerSSN NUMERIC(9),
 
 	PRIMARY KEY (Hotel_ID),
-	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE
+	FOREIGN KEY (Hotel_Chain_ID) REFERENCES Hotel_Chain(Hotel_Chain_ID) ON DELETE CASCADE,
+	FOREIGN KEY managerssn REFERENCES employee(ssn) ON DELETE SET NULL
 );
 
 CREATE TABLE Hotel_PhoneNumbers (
@@ -107,15 +109,6 @@ CREATE TABLE Employee (
 	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE SET NULL, --supposing we don't fire them if the hotel closes
 	FOREIGN KEY (username) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
 	PRIMARY KEY (SSN)
-);
-
-CREATE TABLE Manages_A (
-	Hotel_ID INTEGER,
-	SSN INTEGER,
-
-	PRIMARY KEY (Hotel_ID, SSN),
-	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE CASCADE,
-	FOREIGN KEY (SSN) REFERENCES Employee(SSN) ON DELETE CASCADE
 );
 
 CREATE TABLE Archive (
