@@ -44,7 +44,7 @@
                                     hotel_chain.number_of_hotels,
                                     hotel.hotel_name,
                                     hotel.hotel_city,
-                                    hotel.contact_email,
+                                    hotel.hotel_contact_email,
                                     hotel.number_of_rooms,
                                     hotel.rating,
                                     archive.time_created,
