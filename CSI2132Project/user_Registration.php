@@ -27,7 +27,7 @@
         $_SESSION["usr"] = $_POST["usr"];
 
         if ($_POST["type"] == "employee") {
-            $employeeQuery = "INSERT INTO employee (ssn, name, username, hotel_id) VALUES ({$_POST["ssn"]}, '{$_POST["usr"]}', '{$_POST["name"]}', {$_POST["hotel_id"]})";
+            $employeeQuery = "INSERT INTO employee (ssn, name, username, hotel_id) VALUES ({$_POST["ssn"]}, '{$_POST["name"]}', '{$_POST["usr"]}', {$_POST["hotel_id"]})";
 
             $result = pg_query($db_connection, $employeeQuery) or die('Query failed: ' . pg_last_error());
 
