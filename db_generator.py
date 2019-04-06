@@ -16,8 +16,15 @@ def create_hotels(file, hotel_chains, hotels, rooms, locations):
 			for room in Rooms:
 					file.write("INSERT INTO room (hotel_id, room_number, can_be_extended, has_sea_view, has_mountain_view, room_capacity, price) VALUES (%d, %d, %r, %r, %r, %d, %d);\n" % (j+i*len(hotels)+1, room, random.choice([True, False]), random.choice([True, False]), random.choice([True, False]), random.randint(2, 7), random.randint(10,20) * 10))
 
+def create_managers(file, num_hotels):
+	for i in range(num_hotels):
+		file.write("INSERT INTO users (username, password, type) VALUES ('Jim%d', '%d', 'employee');\n" % (i, i))
+		file.write("INSERT INTO employee (ssn, name, username, hotel_id) VALUES ('%d', 'Jim', 'Jim%d', %d);\n" % (100000000 + i, i, i+1))
+		file.write("UPDATE hotel SET manager_ssn = '%d' WHERE hotel_id = %d;\n" % (100000000 + i, i+1))
+
 if __name__ == "__main__":
 	random.seed(314159)
 	file = open("data.sql", "w")
 	create_hotels(file, Hotel_chains, Hotels, Rooms, Locations)
+	create_managers(file, len(Hotel_chains) * len(Hotels))
 	file.close()
