@@ -114,7 +114,7 @@
 
                     </form>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <?php createTable("SELECT * FROM booking WHERE username = '{$_GET["usr"]}'", "Confirm", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&action=confirm", "post"); ?>
                 </div>
             </div>
