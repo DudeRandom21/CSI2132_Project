@@ -29,10 +29,10 @@
 
     //These are other optional options
     
-    if(!isset($_GET["room_capacity"]) && ($_GET["room_capacity"] != "")) {
+    if($_GET["room_capacity"] != "") {
         $tableQuery = $tableQuery . "AND room_capacity >= {$_GET["room_capacity"]}";
     }
-    if(!isset($_GET["hotel_chain"]) && ($_GET["hotel_chain"] != "")) {
+    if($_GET["hotel_chain"] != "") {
         $tableQuery = $tableQuery . "AND hotel_chain.hotel_chain_name = '{$_GET["hotel_chain"]}'";
     }
     if($_GET["city"] != "") {

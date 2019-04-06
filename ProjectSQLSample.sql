@@ -101,7 +101,7 @@ CREATE TABLE Booking (
 CREATE TABLE Employee (
 	SSN NUMERIC(9) NOT NULL,
 	Name VARCHAR(20) NOT NULL,
-	username VARCHAR(20) NOT NULL,
+	username VARCHAR(20),
 	Hotel_ID INTEGER NOT NULL,
 
 	FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID) ON DELETE SET NULL, --supposing we don't fire them if the hotel closes

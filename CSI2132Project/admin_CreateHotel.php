@@ -16,7 +16,7 @@
                       VALUES ('{$_GET["line"]["hotel_chain_id"]}',
                               '{$_POST["hotel_name"]}',
                               '{$_POST["hotel_city"]}',
-                              '{$_POST["contact_email"]}',
+                              '{$_POST["hotel_contact_email"]}',
                               '{$_POST["rating"]}')
                               RETURNING hotel_id";
                 
@@ -82,8 +82,8 @@
                     <label for="rating">Rating(*)</label>
                     <input type="number" class="form-control" name="rating" required="true">
 
-                    <label for="manager_ssn">Manager SSN(*)</label>
-                    <input type="number" class="form-control" name="manager_ssn" required="true">
+                    <label for="manager_ssn">Manager SSN</label>
+                    <input type="text" pattern="\d*" class="form-control" name="manager_ssn" maxlength="9">
                     <!-- End of Input Fields -->
 
                     <input type="submit" name="submit">

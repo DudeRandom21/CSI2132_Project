@@ -1,4 +1,12 @@
 
+Things to check on second round:
+	- create employee, make sure it doens't fail
+	- check that search by hotel_chain works (user)
+	- view Archive
+
+
+
+
 |------------------------------------------------------------------------------------------|
 
 

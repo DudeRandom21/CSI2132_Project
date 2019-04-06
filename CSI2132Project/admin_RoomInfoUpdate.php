@@ -15,10 +15,10 @@
             $result = pg_query($db_connection, $query) or die('Query failed: ' . pg_last_error());
         }
 
-        if (isset($_POST["room_number"])) {
+        if (isset($_POST["can_be_extended"])) {
             foreach ($_POST as $key => $value) {
                 if ($value != "" && $key != "submit") {
-                    $result = pg_query($db_connection, "UPDATE room_number SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . " WHERE hotel_id = {$_GET["line"]["hotel_id"]}") or die('Query failed: ' . pg_last_error());
+                    $result = pg_query($db_connection, "UPDATE room SET {$key} = " . (is_numeric($value) ? $value : "'{$value}'") . " WHERE hotel_id = {$_GET["line"]["hotel_id"]}") or die('Query failed: ' . pg_last_error());
                 }
             }
         }

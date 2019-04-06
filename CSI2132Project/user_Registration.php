@@ -68,7 +68,7 @@
                     
                     <div class="menu" style="display: none">
                         <label for="ssn">Enter your SSN</label>
-                        <input type="number" class="form-control" name="ssn">
+                        <input type="text" pattern="\d*" class="form-control" name="ssn" maxlength="9">
                     
                         <label for="ssn">Enter your Name</label>
                         <input type="usr" class="form-control" name="name">

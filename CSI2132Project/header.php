@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -13,8 +14,10 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home_redirect.php">Home</a></li>
                 <li><a href="profile_redirect.php">Profile</a></li>
-                <li><a href="view_RoomsByArea.php">Rooms by Area</a></li> <!-- TODO: both of these pages are required by the assignment -->
-                <li><a href="view_HotelRoomCapacity.php">Capacity by Hotel</a></li> <!-- TODO: both of these pages are required by the assignment -->
+                <li><a href="view_RoomsByArea.php">Rooms by Area</a></li>
+                <li><a href="view_HotelRoomCapacity.php">Capacity by Hotel</a></li>
+                <li><a href="view_HotelRoomCapacity.php">Capacity by Hotel</a></li>
+                <?php if($_SESSION["isEmployee"] == "admin") echo '<li><a href="admin_ArchiveView.php">View Archive</a></li>'; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="user_Registration.php?action=logout"><?php echo (isset($_SESSION["isEmployee"]) ? "LogOut" : "Sign Up") ?></a></li>
