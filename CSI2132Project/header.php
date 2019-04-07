@@ -16,7 +16,6 @@
                 <li><a href="profile_redirect.php">Profile</a></li>
                 <li><a href="view_RoomsByArea.php">Rooms by Area</a></li>
                 <li><a href="view_HotelRoomCapacity.php">Capacity by Hotel</a></li>
-                <li><a href="view_HotelRoomCapacity.php">Capacity by Hotel</a></li>
                 <?php if($_SESSION["isEmployee"] == "admin") echo '<li><a href="admin_ArchiveView.php">View Archive</a></li>'; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
